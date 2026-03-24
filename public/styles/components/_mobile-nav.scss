@@ -1,0 +1,69 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+/* Mobile Navigation */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;    
+}
+
+.mobile-nav {
+    background-color: variables.$base-mobile-nav-color;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
+    z-index: 1000;
+
+    .nav-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        color: variables.$base-nav-color;
+        gap: 5px;
+        font-size: 25px;
+        width: 50px; 
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+
+        &:hover {
+            color: variables.$base-nav-hover-color;
+            background-color: rgba(237, 219, 240, 0.667);
+            border-radius: 50%;
+            transform: translateY(-5px);
+        }
+    }
+
+    .sub-mobile-nav {
+        display: none;
+        position: absolute;
+        bottom: 60px;
+        background-color: variables.$base-mobile-nav-color;
+        padding: 10px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 350px; 
+        overflow-y: auto;
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        &.active {
+            display: flex;
+        }
+
+        a {
+            text-decoration: none;
+            color: variables.$base-nav-color;
+            font-size: 18px;
+        }
+    }
+}

@@ -1,0 +1,186 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+.slideshow {
+    @include mixins.flex-center($direction: column, $gap: 0px, $margin: 40px 0);
+    position: relative;
+    height: 450px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+
+    .anime-card {
+        @include mixins.anime-card-basic;
+        position: absolute;
+        width: 70%;
+        height: 380px; 
+        cursor: pointer;
+        animation: stackSlide 15s linear infinite;
+
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                animation-delay: ($i - 1) * 3s;
+            }
+        }
+
+        &:hover {
+            animation-play-state: paused;
+            z-index: 100;
+        }
+        .card-image-wrapper {
+            height: 100%;
+            width: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: variables.$radius-md;
+                display: block;
+            }
+        }
+
+        .card-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            border-radius: 0 0 variables.$radius-md variables.$radius-md;
+            
+            h5 {
+                font-size: 18px;
+                margin: 0 0 5px 0;
+                color: white;
+            }
+            p {
+                font-size: 13px;
+                margin: 2px 0;
+                color: #ddd;
+            }
+        }
+    }
+
+    @keyframes stackSlide {
+        0% {
+            transform: translateY(0);
+            opacity: 0;
+            z-index: 10;
+        }
+
+        2%, 20% {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 10;
+        }
+
+        25% {
+            transform: translateY(-110%);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        26%, 100% {
+            transform: translateY(0);
+            opacity: 0;
+            z-index: 1;
+        }
+    }
+
+}
+
+@media screen and (min-width: 576px) {
+    .slideshow {
+        width: 100%;
+        .anime-card{
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .slideshow {
+        width: 100%;
+        .anime-card{
+            flex: 0 0 50%;
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .slideshow {
+        flex-direction: row;
+        gap: 15px;
+        top: 30px; 
+        width: 100%;
+        max-width: 100vw;
+        height: 500px;
+        perspective: 1000px;
+        animation: none;
+        position: relative;
+        padding: 0 20px;
+
+        .anime-card {
+            position: relative;
+            opacity: 1;
+            animation: none;
+            width: 240px;       
+            height: 380px;     
+            transform: none;
+            flex: 0 1 auto;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            background-color: variables.$dark;
+
+            .card-image-wrapper {
+                height: 380px;
+                width: 100%;
+                transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                
+                img {
+                    filter: brightness(0.9);
+                    transition: transform 0.5s ease;
+                }
+            }
+
+            .card-body {
+                position: absolute;
+                background-color: variables.$dark;
+                backdrop-filter: blur(4px);
+                height: 0;
+                transform: translateY(100%);
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 0;
+                transition: all 0.4s ease 0.1s;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 15px;
+            }
+
+            &:hover {
+                height: 380px;
+                transform: translateY(-10px);
+                z-index: 50;
+                box-shadow: none;
+
+                .card-image-wrapper {
+                    height: 180px;
+                }
+
+                .card-image-wrapper img {
+                    filter: grayscale(10px);
+                    transform: translateY(0);
+                }
+
+                .card-body {
+                    top: 180px;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

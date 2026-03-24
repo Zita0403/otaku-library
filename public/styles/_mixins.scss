@@ -1,0 +1,167 @@
+@use "variables"; /* Colors, fonts, etc. */
+
+// Button
+@mixin button-style {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: variables.$radius-md;
+    background-color: variables.$btn-bg;
+    color: variables.$btn-text;
+    cursor: pointer;
+    transition: variables.$transition;
+    box-shadow: variables.$shadow-sm;
+
+    &:hover {
+        background-color: variables.$btn-hover;
+        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    }
+}
+
+@mixin grid-main-content-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto; 
+    justify-items: center;
+    box-sizing: border-box;
+}
+
+@mixin flex-center($direction: row, $gap: 0px, $margin: 40px 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+    margin: $margin;
+}
+
+@mixin flex-between() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-evenly() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+// Anime card
+@mixin anime-card-basic {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: variables.$radius-lg;
+    background-color: variables.$bg-soft;
+    backdrop-filter: blur(10px);
+    width: 240px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .card-image-wrapper {
+        width: 100%;
+        height: 320px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-radius: variables.$radius-lg variables.$radius-lg 0 0;
+            transition: transform 0.5s ease;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: variables.$base-font-color;
+        font-size: 18px;
+        font-family: "Noto Sans JP", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .card-body {
+        padding: 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        border-radius: variables.$radius-lg;
+
+
+        h5 {
+            font-size: 16px;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            color: variables.$base-font-color;
+            text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            color: variables.$base-font-color;
+            text-align: center;
+        }
+    }
+        
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+   
+}
+
+// Info card
+@mixin info-card {
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: variables.$shadow-sm;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+@mixin text-truncate($lines: 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Glass effect
+
+@mixin glass-effect($opacity: 0.8) {
+    background: rgba(255, 255, 255, $opacity);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+// Absolute center
+
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

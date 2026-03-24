@@ -1,0 +1,193 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+
+.details-layout {
+    @include mixins.info-card;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  
+    max-width: 80%;
+    background-color: variables.$secondary-bg-color;
+    backdrop-filter: blur(10px);
+
+    .anime-poster {
+        align-self: center;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    }
+
+    .anime-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1 {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 24px;
+            color: variables.$base-font-color;
+        }
+
+        p {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 16px;
+            color: variables.$base-font-color;
+            line-height: 1.5;
+        }
+
+        .list-actions {
+            @include mixins.flex-center($gap: 10px);
+
+            h4 {
+                font-family: "Noto Sans JP", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 18px;
+                color: variables.$base-font-color;
+            }
+
+            .btn-group {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+
+                .action-btn {
+                    all: unset;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    width: 5rem;
+                    padding: 12px 24px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 50px;
+                    background: rgba(0, 0, 0, 0.3);
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    font-weight: 600;
+                    font-family: variables.$font-main;
+
+                    i {
+                        font-size: 1.1rem;
+                        transition: transform 0.3s ease;
+                    }
+
+                    span {
+                        font-size: 0.95rem;
+                    }
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.1);
+
+                        &.favorite {
+                            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+                        }
+
+                        &.watched {
+                            box-shadow: 0 5px 15px rgba(46, 213, 115, 0.3);
+                        }
+
+                        &.wishlist {
+                            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
+                        }
+                    }
+
+                    
+                    &.active {
+                        border-color: transparent;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                        
+                        i {
+                            transform: scale(1.2);
+                        }
+
+                        &.favorite {
+                            background: #ff4757; 
+                        }
+
+                        &.watched {
+                            background: #2ed573; 
+                        }
+
+                        &.wishlist {
+                            background: #1e90ff; 
+                        }
+                    }
+
+                    &:active {
+                        transform: scale(0.95);
+                    }
+                }
+            }
+        } 
+
+        .synopsis {
+            max-width: 600px;
+
+            h3 {
+                font-family: "Noto Sans JP", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 18px;
+                color: variables.$base-font-color;
+            }
+
+            p {
+                font-family: "Noto Sans JP", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 16px;
+                color: variables.$base-font-color;
+                line-height: 1.5;
+                text-align: justify;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .details-layout {
+        flex-direction: row;
+        max-width: 90%;
+        padding: 15px;
+
+        .anime-poster {
+            max-width: 30%;
+        }
+
+        .anime-info {
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .synopsis {
+                h3 {
+                    font-size: 16px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

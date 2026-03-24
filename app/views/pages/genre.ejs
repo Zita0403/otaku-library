@@ -1,0 +1,53 @@
+<%- include("../partials/header.ejs") %>
+<h2 class="genre-title">Category: <%= genreName %></h2>
+<div class="content">
+    <% if (animeList && animeList.length > 0) { %>
+        <% animeList.forEach(anime => { %>
+            <div class="anime-card">
+                <a href="/anime/<%= anime.mal_id %>">
+                    <div class="card-image-wrapper">
+                        <img src="<%= anime.images.jpg.large_image_url %>" alt="<%= anime.title %>">
+                    </div>
+                    <div class="card-body">
+                        <h5><%= anime.title %></h5>
+                        <p><i class="fa-solid fa-star"></i> <%= anime.score %></p>
+                        <p>Age Rating: <%= anime.rating %></p>
+                        <p>Year & Season: <%= anime.year %> <%= anime.season %></p>
+                    </div>
+                </a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No anime found in this category.</p>
+    <% } %>
+</div>
+<div class="pagination">
+    <% if (currentPage > 1) { %>
+        <a href="/genre/<%= genreId %>/<%= genreName %>?page=1" class="btn">«</a>
+        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= currentPage - 1 %>" class="btn">‹</a>
+    <% } %>
+
+    <% 
+        // Kiszámoljuk a megjelenítendő 5 oldalt
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(lastPage, startPage + 4);
+        
+        // Korrigálunk, ha a lista végén lennénk
+        if (endPage - startPage < 4) {
+            startPage = Math.max(1, endPage - 4);
+        }
+    %>
+
+    <% for(let i = startPage; i <= endPage; i++) { %>
+        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= i %>" 
+           class="page-num <%= i === currentPage ? 'active' : '' %>">
+            <%= i %>
+        </a>
+    <% } %>
+
+    <% if (hasNextPage) { %>
+        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= currentPage + 1 %>" class="btn">›</a>
+        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= lastPage %>" class="btn">»</a>
+    <% } %>
+</div>
+<%- include("../partials/footer.ejs") %>

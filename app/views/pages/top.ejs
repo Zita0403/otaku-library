@@ -1,0 +1,22 @@
+<%- include("../partials/header.ejs") %>
+<div class="toplist-layout">
+    <% if (error) { %>
+        <p class="error-message">Error fetching top anime: <%= error %></p>
+    <% } else { %>
+        <% animeList.forEach(anime => { %>
+            <div class="anime-card">
+                <a href="/anime/<%= anime.mal_id %>">
+                    <div class="card-image-wrapper">
+                        <img src="<%= anime.images.jpg.large_image_url %>" alt="<%= anime.title %>">
+                    </div>
+                    <div class="card-body">
+                        <h5><%= anime.title %></h5>
+                            <p><i class="fa-solid fa-star"></i> <%= anime.score %></p>
+                            <p>Year & Season: <%= anime.year %> <%= anime.season %></p>
+                    </div>
+                </a>
+            </div>
+        <% }); %>
+    <% } %>
+</div>
+<%- include("../partials/footer.ejs") %>

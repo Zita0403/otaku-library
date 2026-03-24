@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/otaku.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <!-- Saját stíluslap-->
+    <link rel="stylesheet" href="/styles/style.css">
+    <!-- Betűstílus importálása, cím -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Navigáció betűstílusa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Otaku Library</title>
+</head>
+<body>
+    <canvas id="sakura-canvas"></canvas>
+    <header> 
+        <div class="header-left">
+            <a href="/"> 
+                <img src="/images/otaku.png" style="width: 60px; height: 60px;" class="me-2">
+                <h1>Otaku Library</h1> 
+            </a> 
+            <ul class="nav"> 
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="#">Genres</a>
+                    <ul class="sub-nav">
+                        <% genres.forEach(genre => { %>
+                        <li>
+                            <a href="/genre/<%= genre.mal_id %>/<%= genre.name %>"><%= genre.name %></a>
+                        </li>
+                        <% }); %>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="/top">Toplist</a></li>
+            </ul> 
+        </div>
+
+        <div class="header-center">
+            <form role="search" action="/search" method="POST"> 
+                <input class="search" type="search" name="title" placeholder="Search..."> 
+                <div id="autocomplete-list"></div>
+            </form>
+        </div>
+
+        <div class="header-right">
+            <a href="https://github.com/Zita0403">
+                <i class="fa-brands fa-github github-icon"></i>
+            </a>
+            <div id="account-login">
+            <% if (locals.user) { %>
+            <div class="user-dropdown">
+                <div class="dropdown-trigger">
+                    <span><%= user.user_name %></span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">
+                        <strong><%= user.user_name %></strong><br>
+                        <small><%= user.email %></small>
+                    </li>
+                    <hr>
+                    <li><a href="/auth/account#settings"><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <li><a href="/auth/account"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                    <hr>
+                    <li><a href="/auth/logout" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                </ul>
+            </div>
+                <% } else { %>
+                    <div class="auth-group">
+                        <a href="/auth/login" id="login">
+                            <p>Sign in</p>
+                        </a>
+                        <span>/</span>
+                        <a href="/auth/register" id="register">
+                            <p>Sign up</p>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div> 
+    </header>
+    <nav class="mobile-nav">
+        <a href="/" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        <a href="/top" class="nav-item">
+            <i class="fa-solid fa-thumbs-up"></i>
+        </a>
+        <div href="#" class="nav-item sub-mobile-nav-toggle"><i class="fa-solid fa-masks-theater"></i>
+            <ul class="sub-mobile-nav">
+                <% genres.forEach(genre => { %>
+                <li>
+                    <a href="/genre/<%= genre.mal_id %>/<%= genre.name %>"><%= genre.name %></a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+        <label for="search-input-id" class="nav-item" onclick="document.querySelector('.search').focus()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </label>
+    </nav>
+    <main class="main-sect">

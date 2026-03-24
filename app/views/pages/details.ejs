@@ -1,0 +1,66 @@
+<%- include("../partials/header.ejs") %>
+<% if (locals.anime) { %>
+    <div class="details-layout">
+        <div class="anime-poster">
+            <% 
+                const posterUrl = (anime.images && anime.images.jpg) ? anime.images.jpg.large_image_url : 'https://via.placeholder.com/400x600?text=No+Image';
+            %>
+            <img src="<%= posterUrl %>" alt="<%= anime.title %>">
+        </div>
+        <div class="anime-info">
+            <h1><%= anime.title %></h1>
+            <p><strong>Original title:</strong> <%= anime.title_japanese %></p>
+            <p><strong>Score:</strong> ⭐ <%= anime.score %></p>
+            <p><strong>Year & Season:</strong> <%= anime.year %> <%= anime.season %></p>
+            <p><strong>Age Rating:</strong> <%= anime.rating %></p>
+            <p><strong>Episodes:</strong> <%= anime.episodes %></p>
+            <div class="list-actions">
+                <h4>Add to list:</h4>
+                <div class="btn-group">
+                    <!-- Favorite -->
+                    <button type="button" 
+                            class="action-btn favorite btn-toggle <%= (locals.status && status.favorite) ? 'active' : '' %>" 
+                            data-id="<%= anime.mal_id %>"
+                            data-title="<%= anime.title %>"
+                            data-image="<%= posterUrl %>"
+                            data-type="favorite">
+                        <i class="<%= (locals.status && status.favorite) ? 'fa-solid' : 'fa-regular' %> fa-heart"></i>
+                        <span>Favorite</span>
+                    </button>
+
+                    <!-- Watched -->
+                    <button type="button" 
+                            class="action-btn watched btn-toggle <%= (locals.status && status.watched) ? 'active' : '' %>" 
+                            data-id="<%= anime.mal_id %>"
+                            data-title="<%= anime.title %>"
+                            data-image="<%= posterUrl %>"
+                            data-type="watched">
+                        <i class="<%= (locals.status && status.watched) ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle' %>"></i>
+                        <span>Watched</span>
+                    </button>
+
+                    <!-- Wishlist -->
+                    <button type="button" 
+                            class="action-btn wishlist btn-toggle <%= (locals.status && status.wishlist) ? 'active' : '' %>" 
+                            data-id="<%= anime.mal_id %>"
+                            data-title="<%= anime.title %>"
+                            data-image="<%= posterUrl %>"
+                            data-type="wishlist">
+                            <i class="<%= (locals.status && status.wishlist) ? 'fa-solid' : 'fa-regular' %> fa-clock"></i>
+                        <span>Wishlist</span>
+                    </button>
+                </div>
+            </div>
+            <div class="synopsis">
+                <h3>Synopsis</h3>
+                <p><%= anime.synopsis %></p>
+            </div>
+        </div>
+    </div>
+<% } else { %>
+    <div class="container">
+        <h2>Anime adatai nem tölthetők be.</h2>
+        <a href="/" class="btn btn-primary">Back to Home page</a>
+    </div>
+<% } %>
+<%- include("../partials/footer.ejs") %>

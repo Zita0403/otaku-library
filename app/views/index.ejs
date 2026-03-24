@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+<div class="slideshow">
+    <% animeList.slice(0, 5).forEach((anime, index) => { %> 
+            <div class="anime-card">
+                <a href="/anime/<%= anime.mal_id %>">
+                    <div class="card-image-wrapper">
+                        <img src="<%= anime.images.jpg.large_image_url %>" alt="<%= anime.title %>">
+                    </div>
+                    <div class="card-body">
+                        <h5><%= anime.title %></h5>
+                        <p><i class="fa-solid fa-star"></i> <%= anime.score %></p>
+                        <p>Age Rating: <%= anime.rating %></p>
+                    </div>
+                </a>
+            </div>
+    <% }); %>
+</div>
+<%- include("partials/footer.ejs") %>

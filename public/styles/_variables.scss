@@ -1,0 +1,59 @@
+// Brand colors
+$primary:           #FF375E;
+$primary-light:     #f06d81; 
+$secondary:         #000072;
+$dark:              #000;
+$accent:            rgb(234, 169, 182);
+
+// Neutrals
+$bg-main:           #F8F8F8;
+$bg-soft:           #f06d816f;
+$text-main:         #515177;
+$text-muted:        #76778C;
+$overlay:           rgba(0, 0, 0, 0.5);
+
+// Functionality
+$nav-link:          $primary;
+$nav-hover:         $secondary;
+$btn-bg:            $dark;
+$btn-hover:         $primary-light;
+$btn-text:          #FFFFFF;
+
+// Tipography
+$font-main:         'Noto Sans JP', sans-serif;
+$transition:        all 0.3s ease;
+$radius-sm:         4px;
+$radius-md:         8px;
+$radius-lg:         13px;
+$shadow-sm:         0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md:         0 4px 8px rgba(0, 0, 0, 0.15);
+
+
+
+
+
+
+
+
+
+
+
+
+
+$base-nav-color: #FF375E;
+$base-nav-hover-color: #000072;
+$base-nav-active-color: #000072;
+
+$base-mobile-nav-color: rgb(234 169 182);
+
+$base-font-color: #515177;
+$base-font-hover-color: #76778C;
+$base-font-active-color: #76778C;
+
+$base-bg-color: #F8F8F8;
+$secondary-bg-color: #f06d816f;
+
+$button-bg-color: #FF375E;
+$button-hover-bg-color: #f06d81;
+
+$list-button-bg-color: #0000007e;

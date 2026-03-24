@@ -1,0 +1,97 @@
+<%- include("../partials/header.ejs") %>
+<div class="account-container">
+    <aside class="account-sidebar">
+        <div class="user-info-card">
+            <div class="user-avatar">
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+            <h2><%= user.user_name %></h2>
+            <p class="user-email"><%= user.email %></p>
+            
+            <hr class="sidebar-divider">
+            
+            <div class="sidebar-stats">
+                <div class="stat-item">
+                    <span class="stat-value"><%= lists.favorite.length %></span>
+                    <span class="stat-label">Favorites</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value"><%= lists.watched.length %></span>
+                    <span class="stat-label">Watched</span>
+                </div>
+            </div>
+
+            <div class="sidebar-actions">
+                <a href="/auth/logout" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+    <main class="account-main">
+        <section class="settings-section" id="settings">
+            <h3 class="section-title">Account Settings</h3>
+            <div class="settings-grid">
+                <div class="settings-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="card-details">
+                        <h4>Content Filtering</h4>
+                        <p>Manage your browsing experience</p>
+                        <span class="status-badge <%= user.allow_nsfw ? 'nsfw-on' : 'nsfw-off' %>">
+                            <%= user.allow_nsfw ? "18+ content allowed" : "Family-friendly mode" %>
+                        </span>
+                    </div>
+                    <form action="/auth/toggle-nsfw" method="POST">
+                        <button type="submit" class="toggle-btn">
+                            <%= user.allow_nsfw ? "Disable" : "Enable" %>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTÁK SZAKASZ -->
+        <section class="lists-section">
+            <h3 class="section-title">My Anime Library</h3>
+            
+            <% const sections = [ 
+                {id: 'favorite', title: 'Favorites', icon: 'fa-heart'}, 
+                {id: 'watched', title: 'Recently Watched', icon: 'fa-check-circle'}, 
+                {id: 'wishlist', title: 'Wishlist', icon: 'fa-clock'} 
+            ]; %>
+
+            <% sections.forEach(section => { %>
+                <div class="list-container">
+                    <div class="list-header">
+                        <h4><i class="fa-solid <%= section.icon %>"></i> <%= section.title %></h4>
+                        <span class="count"><%= lists[section.id].length %> items</span>
+                    </div>
+                    
+                    <div class="anime-scroll-row">
+                        <% if (lists[section.id].length > 0) { %>
+                            <% lists[section.id].forEach(item => { %>
+                                <div class="mini-anime-card">
+                                    <a href="/anime/<%= item.anime_id %>">
+                                        <div class="img-container">
+                                            <img src="<%= item.anime_image %>" alt="<%= item.anime_title %>">
+                                        </div>
+                                        <div class="mini-card-info">
+                                            <h6 title="<%= item.anime_title %>"><%= item.anime_title %></h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        <% } else { %>
+                            <div class="empty-list">
+                                <p>This list is currently empty.</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
+    </main>
+</div>
+<%- include("../partials/footer.ejs") %>

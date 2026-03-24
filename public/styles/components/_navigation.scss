@@ -1,0 +1,71 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+/* Navigation */
+.nav {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    .mobile-nav {
+        display: none;
+    }
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        list-style-type: none;
+        
+        a {
+            text-decoration: none;
+            color: variables.$base-nav-color;
+            font-size: 18px;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            transition: color 0.6s ease-in-out;
+        }
+
+        .nav-item {
+            padding: 10px;
+        }
+
+        .sub-nav {
+            min-width: 600px;
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            position: absolute;
+            background-color: variables.$base-mobile-nav-color;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            list-style-type: none;
+            max-height: 400px;
+            overflow-y: auto;
+
+            li {
+                margin-bottom: 5px;
+                width: 100%;
+
+                a {
+                    font-size: 18px;
+                    color: variables.$base-nav-color;
+                    display: block;
+                }
+
+                a:hover {
+                    color: variables.$base-nav-hover-color;
+                }
+            }
+        }
+
+        .nav-item:hover > .sub-nav {
+            display: grid;
+        }   
+
+        .nav-item:hover > a {
+            color: variables.$base-nav-hover-color;
+        }
+    }
+}

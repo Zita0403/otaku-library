@@ -1,0 +1,1459 @@
+#sakura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  background-color: #ffb7c5;
+  border-radius: 150% 0 150% 0;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(360deg);
+  }
+}
+/* Sakura Canvas */
+/* Colors, fonts, etc. */
+/* Colors, fonts, etc. */
+/* Mobile Navigation */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav {
+  background-color: rgb(234, 169, 182);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 30px;
+  z-index: 1000;
+}
+.mobile-nav .nav-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: #FF375E;
+  gap: 5px;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.mobile-nav .nav-item:hover {
+  color: #000072;
+  background-color: rgba(237, 219, 240, 0.667);
+  border-radius: 50%;
+  transform: translateY(-5px);
+}
+.mobile-nav .sub-mobile-nav {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  background-color: rgb(234, 169, 182);
+  padding: 10px;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 350px;
+  overflow-y: auto;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-nav .sub-mobile-nav.active {
+  display: flex;
+}
+.mobile-nav .sub-mobile-nav a {
+  text-decoration: none;
+  color: #FF375E;
+  font-size: 18px;
+}
+
+/* Mobile Navigation */
+/* Colors, fonts, etc. */
+/* Navigation */
+.nav {
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .mobile-nav {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    list-style-type: none;
+  }
+  .nav a {
+    text-decoration: none;
+    color: #FF375E;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    transition: color 0.6s ease-in-out;
+  }
+  .nav .nav-item {
+    padding: 10px;
+  }
+  .nav .sub-nav {
+    min-width: 600px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    background-color: rgb(234, 169, 182);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    list-style-type: none;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .nav .sub-nav li {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .nav .sub-nav li a {
+    font-size: 18px;
+    color: #FF375E;
+    display: block;
+  }
+  .nav .sub-nav li a:hover {
+    color: #000072;
+  }
+  .nav .nav-item:hover > .sub-nav {
+    display: grid;
+  }
+  .nav .nav-item:hover > a {
+    color: #000072;
+  }
+}
+/* Navigation */
+/* Colors, fonts, etc. */
+.details-layout {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 80%;
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  backdrop-filter: blur(10px);
+}
+.details-layout .anime-poster {
+  align-self: center;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+.details-layout .anime-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.details-layout .anime-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.details-layout .anime-info h1 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+  color: #515177;
+}
+.details-layout .anime-info p {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #515177;
+  line-height: 1.5;
+}
+.details-layout .anime-info .list-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 40px 0;
+}
+.details-layout .anime-info .list-actions h4 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: #515177;
+}
+.details-layout .anime-info .list-actions .btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 5rem;
+  padding: 12px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn span {
+  font-size: 0.95rem;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn:hover.favorite {
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn:hover.watched {
+  box-shadow: 0 5px 15px rgba(46, 213, 115, 0.3);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn:hover.wishlist {
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn.active {
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn.active i {
+  transform: scale(1.2);
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn.active.favorite {
+  background: #ff4757;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn.active.watched {
+  background: #2ed573;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn.active.wishlist {
+  background: #1e90ff;
+}
+.details-layout .anime-info .list-actions .btn-group .action-btn:active {
+  transform: scale(0.95);
+}
+.details-layout .anime-info .synopsis {
+  max-width: 600px;
+}
+.details-layout .anime-info .synopsis h3 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: #515177;
+}
+.details-layout .anime-info .synopsis p {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #515177;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+@media screen and (min-width: 992px) {
+  .details-layout {
+    flex-direction: row;
+    max-width: 90%;
+    padding: 15px;
+  }
+  .details-layout .anime-poster {
+    max-width: 30%;
+  }
+  .details-layout .anime-info h1 {
+    font-size: 20px;
+  }
+  .details-layout .anime-info p {
+    font-size: 14px;
+  }
+  .details-layout .anime-info .synopsis h3 {
+    font-size: 16px;
+  }
+  .details-layout .anime-info .synopsis p {
+    font-size: 14px;
+  }
+}
+/* Details */
+/* Colors, fonts, etc. */
+.slideshow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  margin: 40px 0;
+  position: relative;
+  height: 450px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+.slideshow .anime-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  backdrop-filter: blur(10px);
+  width: 240px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.slideshow .anime-card .card-image-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+.slideshow .anime-card .card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px 13px 0 0;
+  transition: transform 0.5s ease;
+}
+.slideshow .anime-card a {
+  text-decoration: none;
+  color: #515177;
+  font-size: 18px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.slideshow .anime-card .card-body {
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 13px;
+}
+.slideshow .anime-card .card-body h5 {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.slideshow .anime-card .card-body p {
+  font-size: 14px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.slideshow .anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.slideshow .anime-card {
+  position: absolute;
+  width: 70%;
+  height: 380px;
+  cursor: pointer;
+  animation: stackSlide 15s linear infinite;
+}
+.slideshow .anime-card:nth-child(1) {
+  animation-delay: 0s;
+}
+.slideshow .anime-card:nth-child(2) {
+  animation-delay: 3s;
+}
+.slideshow .anime-card:nth-child(3) {
+  animation-delay: 6s;
+}
+.slideshow .anime-card:nth-child(4) {
+  animation-delay: 9s;
+}
+.slideshow .anime-card:nth-child(5) {
+  animation-delay: 12s;
+}
+.slideshow .anime-card:hover {
+  animation-play-state: paused;
+  z-index: 100;
+}
+.slideshow .anime-card .card-image-wrapper {
+  height: 100%;
+  width: 100%;
+}
+.slideshow .anime-card .card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.slideshow .anime-card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  color: white;
+  padding: 20px 15px;
+  text-align: left;
+  border-radius: 0 0 8px 8px;
+}
+.slideshow .anime-card .card-body h5 {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  color: white;
+}
+.slideshow .anime-card .card-body p {
+  font-size: 13px;
+  margin: 2px 0;
+  color: #ddd;
+}
+@keyframes stackSlide {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+    z-index: 10;
+  }
+  2%, 20% {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 10;
+  }
+  25% {
+    transform: translateY(-110%);
+    opacity: 0;
+    z-index: 1;
+  }
+  26%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .slideshow {
+    width: 100%;
+  }
+  .slideshow .anime-card {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slideshow {
+    width: 100%;
+  }
+  .slideshow .anime-card {
+    flex: 0 0 50%;
+    width: 70%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .slideshow {
+    flex-direction: row;
+    gap: 15px;
+    top: 30px;
+    width: 100%;
+    max-width: 100vw;
+    height: 500px;
+    perspective: 1000px;
+    animation: none;
+    position: relative;
+    padding: 0 20px;
+  }
+  .slideshow .anime-card {
+    position: relative;
+    opacity: 1;
+    animation: none;
+    width: 240px;
+    height: 380px;
+    transform: none;
+    flex: 0 1 auto;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    background-color: #000;
+  }
+  .slideshow .anime-card .card-image-wrapper {
+    height: 380px;
+    width: 100%;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .slideshow .anime-card .card-image-wrapper img {
+    filter: brightness(0.9);
+    transition: transform 0.5s ease;
+  }
+  .slideshow .anime-card .card-body {
+    position: absolute;
+    background-color: #000;
+    backdrop-filter: blur(4px);
+    height: 0;
+    transform: translateY(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transition: all 0.4s ease 0.1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+  }
+  .slideshow .anime-card:hover {
+    height: 380px;
+    transform: translateY(-10px);
+    z-index: 50;
+    box-shadow: none;
+  }
+  .slideshow .anime-card:hover .card-image-wrapper {
+    height: 180px;
+  }
+  .slideshow .anime-card:hover .card-image-wrapper img {
+    filter: grayscale(10px);
+    transform: translateY(0);
+  }
+  .slideshow .anime-card:hover .card-body {
+    top: 180px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Slideshow */
+/* Colors, fonts, etc. */
+/* Genre */
+.genre-title {
+  font-size: 28px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #515177;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  justify-items: center;
+  box-sizing: border-box;
+}
+.content .anime-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  backdrop-filter: blur(10px);
+  width: 240px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.content .anime-card .card-image-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+.content .anime-card .card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px 13px 0 0;
+  transition: transform 0.5s ease;
+}
+.content .anime-card a {
+  text-decoration: none;
+  color: #515177;
+  font-size: 18px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.content .anime-card .card-body {
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 13px;
+}
+.content .anime-card .card-body h5 {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.content .anime-card .card-body p {
+  font-size: 14px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.content .anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 40px 0;
+}
+
+.page-num, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.page-num:hover, .btn:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+
+.page-num.active {
+  background: #FF375E;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+
+/* Genre */
+/* Colors, fonts, etc. */
+.toplist-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+.anime-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  backdrop-filter: blur(10px);
+  width: 240px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.anime-card .card-image-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+.anime-card .card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px 13px 0 0;
+  transition: transform 0.5s ease;
+}
+.anime-card a {
+  text-decoration: none;
+  color: #515177;
+  font-size: 18px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.anime-card .card-body {
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 13px;
+}
+.anime-card .card-body h5 {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.anime-card .card-body p {
+  font-size: 14px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #515177;
+  text-align: center;
+}
+.anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Top List */
+/* Colors, fonts, etc. */
+.auth-container {
+  width: 18rem;
+}
+.auth-container #login-form,
+.auth-container #register-form {
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 15px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.auth-container #login-form form,
+.auth-container #register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+.auth-container #login-form input,
+.auth-container #register-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.auth-container #login-form button,
+.auth-container #register-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #FF375E;
+  color: #515177;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.auth-container #login-form button:hover,
+.auth-container #register-form button:hover {
+  background-color: #f06d81;
+}
+
+@media screen and (min-width: 768px) {
+  .auth-container {
+    width: 22rem;
+  }
+}
+/* Login */
+/* Colors, fonts, etc. */
+.account-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 20px;
+  padding: 0 20px;
+  align-items: start;
+}
+.account-container .account-sidebar {
+  position: relative;
+  top: 100px;
+}
+.account-container .account-sidebar .user-info-card {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: white;
+  text-align: center;
+}
+.account-container .account-sidebar .user-info-card .user-avatar {
+  font-size: 80px;
+  color: #FF375E;
+  margin-bottom: 15px;
+}
+.account-container .account-sidebar .user-info-card h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #515177;
+  font-weight: 700;
+}
+.account-container .account-sidebar .user-info-card .user-email {
+  color: #76778C;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.account-container .account-sidebar .user-info-card .sidebar-divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+.account-container .account-sidebar .user-info-card .sidebar-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 25px;
+}
+.account-container .account-sidebar .user-info-card .sidebar-stats .stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.account-container .account-sidebar .user-info-card .sidebar-stats .stat-item .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FF375E;
+}
+.account-container .account-sidebar .user-info-card .sidebar-stats .stat-item .stat-label {
+  font-size: 12px;
+  color: #76778C;
+}
+.account-container .account-sidebar .user-info-card .logout-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff4757;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.account-container .account-sidebar .user-info-card .logout-link:hover {
+  opacity: 0.7;
+}
+.account-container .account-main .section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #515177;
+  border-bottom: 2px solid rgba(255, 55, 94, 0.1);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.account-container .account-main .settings-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  gap: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+.account-container .account-main .settings-card .card-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 55, 94, 0.1);
+  color: #FF375E;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.account-container .account-main .settings-card .card-details {
+  flex-grow: 1;
+}
+.account-container .account-main .settings-card .card-details h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #515177;
+  font-weight: 600;
+}
+.account-container .account-main .settings-card .card-details p {
+  margin: 2px 0 8px 0;
+  font-size: 14px;
+  color: #76778C;
+}
+.account-container .account-main .settings-card .card-details .status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.account-container .account-main .settings-card .card-details .status-badge.nsfw-on {
+  background: #ffebeb;
+  color: #ff4757;
+}
+.account-container .account-main .settings-card .card-details .status-badge.nsfw-off {
+  background: #ebffef;
+  color: #2ed573;
+}
+.account-container .account-main .settings-card .toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.account-container .account-main .settings-card .toggle-btn:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.account-container .account-main .settings-card .toggle-btn {
+  padding: 10px 25px;
+  font-size: 14px;
+  border-radius: 30px;
+}
+.account-container .account-main .list-container {
+  margin-bottom: 40px;
+}
+.account-container .account-main .list-container .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.account-container .account-main .list-container .list-header h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #515177;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.account-container .account-main .list-container .list-header h4 i {
+  color: #FF375E;
+}
+.account-container .account-main .list-container .list-header .count {
+  font-size: 13px;
+  color: #76778C;
+  background: #f0f0f0;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+.account-container .account-main .list-container .anime-scroll-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 5px 20px 5px;
+  scroll-behavior: smooth;
+}
+.account-container .account-main .list-container .anime-scroll-row::-webkit-scrollbar {
+  height: 8px;
+}
+.account-container .account-main .list-container .anime-scroll-row::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.account-container .account-main .list-container .anime-scroll-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.account-container .account-main .list-container .anime-scroll-row::-webkit-scrollbar-thumb:hover {
+  background: #FF375E;
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card {
+  flex: 0 0 180px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card a {
+  text-decoration: none;
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card .img-container {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card .img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card:hover .img-container img {
+  transform: scale(1.1);
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card .mini-card-info {
+  padding: 12px;
+}
+.account-container .account-main .list-container .anime-scroll-row .mini-anime-card .mini-card-info h6 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #515177;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.account-container .account-main .list-container .empty-list {
+  background: #fdfdfd;
+  border: 2px dashed #eee;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  color: #76778C;
+  font-style: italic;
+}
+
+@media screen and (min-width: 992px) {
+  .account-container {
+    grid-template-columns: 300px 1fr;
+  }
+  .account-container .account-sidebar {
+    position: sticky;
+  }
+}
+/* Account */
+/*Colors */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background-color: rgba(255, 255, 255, 0.199);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  /* Header Top */
+}
+header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+header .header-left a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  gap: 15px;
+}
+header .header-left h1 {
+  text-decoration: none;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 26px;
+  white-space: nowrap;
+  color: #515177;
+  transition: all 0.6s ease-in-out;
+  display: none;
+}
+header .header-left h1:hover {
+  color: #76778C;
+}
+header .header-center form {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+header .header-center form .search {
+  width: 100%;
+  max-width: 300px;
+  border: #fff5f7 solid 1px;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+header .header-center form .search:focus {
+  outline: none;
+  border-color: rgb(199, 49, 74);
+  box-shadow: 0 0 5px rgba(199, 49, 74, 0.5);
+}
+header .header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+}
+header .header-right a {
+  text-decoration: none;
+  color: #333;
+}
+header .header-right #account-login {
+  display: flex;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+header .header-right #account-login .dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+header .header-right #account-login .dropdown-trigger i {
+  font-size: 0.8rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+header .header-right #account-login .dropdown-trigger:hover {
+  color: #f06d81;
+}
+header .header-right #account-login .dropdown-menu {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  padding: 10px;
+  list-style-type: none;
+  background-color: rgb(234, 169, 182);
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  gap: 8px;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), visibility 0.3s;
+}
+header .header-right #account-login .dropdown-menu li:hover a {
+  color: #76778C;
+}
+header .header-right #account-login:hover .dropdown-menu, header .header-right #account-login.active .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  top: 100%;
+}
+header .header-right #account-login:hover .dropdown-trigger i, header .header-right #account-login.active .dropdown-trigger i {
+  transform: rotate(180deg);
+  color: #FF375E;
+}
+header .header-right .auth-group {
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+}
+header .header-right .auth-group #login {
+  font-weight: 600;
+}
+header .header-right .auth-group #login:hover {
+  text-decoration: underline;
+}
+header .header-right .auth-group #register {
+  text-decoration: underline;
+}
+header .header-right .auth-group #register:hover {
+  text-decoration: none;
+}
+header .header-right .github-icon {
+  display: none;
+  color: black;
+  font-size: 32px;
+  transition: all 0.5s ease-in-out;
+}
+header .header-right .github-icon:hover {
+  transform: scale(1.2);
+  color: rgb(90, 85, 85);
+}
+header .header-right .login {
+  text-decoration: none;
+  color: #515177;
+  font-size: 25px;
+  transition: all 0.5s ease-in-out;
+}
+header .header-right .login:hover {
+  transform: scale(1.2);
+  color: rgb(90, 85, 85);
+}
+
+/* Autocomplete list */
+#autocomplete-list {
+  background: #F8F8F8;
+  backdrop-filter: blur(10px);
+  border: 1px solid #dee2e6;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  width: 100%;
+  z-index: 100000;
+}
+#autocomplete-list .list-group-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+#autocomplete-list .list-group-item:hover {
+  background: rgba(255, 55, 95, 0.2352941176);
+}
+
+/* Main */
+.main-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 30px 0;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.modal-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+.modal-overlay .modal-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+  transform: translateY(-20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-overlay.show .modal-overlay .modal-content {
+  transform: translateY(0) scale(1);
+}
+.modal-overlay .modal-content .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-overlay .modal-content .modal-header .close-modal {
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+}
+.modal-overlay .modal-content .modal-header .close-modal:hover {
+  color: #fff;
+}
+.modal-overlay .modal-content .modal-footer .modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.modal-overlay .modal-content .modal-footer .modal-btn:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.modal-overlay .modal-content .modal-footer .modal-btn {
+  margin-top: 10px;
+  float: right;
+}
+
+footer {
+  background-color: rgba(240, 109, 129, 0.4352941176);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px 0;
+}
+footer p {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #515177;
+}
+footer p:hover {
+  color: #76778C;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+  }
+  .main-sect {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .content {
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 992px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 60px;
+  }
+  header .header-center {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header .header-center form {
+    width: 100%;
+  }
+  header .header-center form .search {
+    width: 100%;
+    max-width: 400px;
+  }
+  header .header-right .github-icon {
+    display: block;
+  }
+  .nav {
+    display: flex;
+  }
+  #autocomplete-list {
+    width: 350px;
+    right: 0;
+    left: auto;
+  }
+}/*# sourceMappingURL=style.css.map */

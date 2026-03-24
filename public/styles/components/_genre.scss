@@ -1,0 +1,35 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+
+/* Genre */
+.genre-title {
+    font-size: 28px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: variables.$base-font-color;
+    margin-bottom: 20px;
+}
+
+.content {
+    @include mixins.grid-main-content-layout;
+
+    .anime-card {
+        @include mixins.anime-card-basic;
+    }
+}
+
+.pagination {
+    @include mixins.flex-center($gap: 5px, $margin: 40px 0);
+}
+
+.page-num, .btn {
+    @include mixins.button-style;
+}
+
+.page-num.active {
+    background: variables.$primary;
+    pointer-events: none; 
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}

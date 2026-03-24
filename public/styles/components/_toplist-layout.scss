@@ -1,0 +1,9 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; 
+.toplist-layout {
+    @include mixins.grid-main-content-layout;
+}
+
+.anime-card { 
+    @include mixins.anime-card-basic;
+}
