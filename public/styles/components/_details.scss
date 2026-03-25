@@ -7,7 +7,7 @@
     flex-direction: column;
     gap: 20px;  
     max-width: 80%;
-    background-color: variables.$secondary-bg-color;
+    background-color: variables.$bg-soft;
     backdrop-filter: blur(10px);
 
     .anime-poster {
@@ -34,7 +34,7 @@
             font-weight: 600;
             font-style: normal;
             font-size: 24px;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
         }
 
         p {
@@ -43,7 +43,7 @@
             font-weight: 400;
             font-style: normal;
             font-size: 16px;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
             line-height: 1.5;
         }
 
@@ -56,7 +56,7 @@
                 font-weight: 500;
                 font-style: normal;
                 font-size: 18px;
-                color: variables.$base-font-color;
+                color: variables.$text-main;
             }
 
             .btn-group {
@@ -78,7 +78,7 @@
                     cursor: pointer;
                     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     font-weight: 600;
-                    font-family: variables.$font-main;
+                    font-family: variables.$text-main;
 
                     i {
                         font-size: 1.1rem;
@@ -143,7 +143,7 @@
                 font-weight: 500;
                 font-style: normal;
                 font-size: 18px;
-                color: variables.$base-font-color;
+                color: variables.$text-main;
             }
 
             .synopsis-text {
@@ -152,7 +152,7 @@
                 font-weight: 400;
                 font-style: normal;
                 font-size: 16px;
-                color: variables.$base-font-color;
+                color: variables.$text-main;
                 line-height: 1.5;
                 text-align: justify;
 

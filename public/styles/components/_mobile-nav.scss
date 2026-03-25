@@ -8,7 +8,7 @@
 }
 
 .mobile-nav {
-    background-color: variables.$base-mobile-nav-color;
+    background-color: variables.$accent;
     position: fixed;
     bottom: 0;
     display: flex;
@@ -26,7 +26,7 @@
         justify-content: center;
         text-align: center;
         text-decoration: none;
-        color: variables.$base-nav-color;
+        color: variables.$primary;
         gap: 5px;
         font-size: 25px;
         width: 50px; 
@@ -35,7 +35,7 @@
         position: relative;
 
         &:hover {
-            color: variables.$base-nav-hover-color;
+            color: variables.$secondary;
             background-color: rgba(237, 219, 240, 0.667);
             border-radius: 50%;
             transform: translateY(-5px);
@@ -46,7 +46,7 @@
         display: none;
         position: absolute;
         bottom: 60px;
-        background-color: variables.$base-mobile-nav-color;
+        background-color: variables.$accent;
         padding: 10px;
         border-radius: 8px;
         flex-direction: column;
@@ -62,8 +62,12 @@
 
         a {
             text-decoration: none;
-            color: variables.$base-nav-color;
+            color: variables.$primary;
             font-size: 18px;
+
+            &:hover {
+                color: variables.$secondary;
+            }
         }
     }
 }

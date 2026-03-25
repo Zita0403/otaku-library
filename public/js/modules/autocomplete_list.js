@@ -1,3 +1,4 @@
+// modules/autocomplete.js
 const searchInput = document.querySelector('.search');
 const autocompleteList = document.getElementById('autocomplete-list');
 let debounceTimer;

@@ -161,12 +161,14 @@ const { genreId, genreName } = req.params;
         const safeGenre = filterAnimeList(response.data.data, req.user);
         const pagination = response.data.pagination;
         res.render("pages/genre", { 
+            title: `Category: ${genreName}`,
             animeList: safeGenre, 
             genreName: genreName,
             genreId: genreId,
             currentPage: page,
-            lastPage: response.data.pagination.last_visible_page,
+            lastPage: pagination.last_visible_page,
             hasNextPage: pagination.has_next_page,
+            type: 'genre',
             error:null
         });
     } catch (err) {

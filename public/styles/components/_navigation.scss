@@ -18,7 +18,7 @@
         
         a {
             text-decoration: none;
-            color: variables.$base-nav-color;
+            color: variables.$primary;
             font-size: 18px;
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
@@ -36,7 +36,7 @@
             display: none;
             grid-template-columns: repeat(3, 1fr);
             position: absolute;
-            background-color: variables.$base-mobile-nav-color;
+            background-color: variables.$accent;
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
@@ -50,12 +50,12 @@
 
                 a {
                     font-size: 18px;
-                    color: variables.$base-nav-color;
+                    color: variables.$primary;
                     display: block;
                 }
 
                 a:hover {
-                    color: variables.$base-nav-hover-color;
+                    color: variables.$secondary;
                 }
             }
         }
@@ -65,7 +65,7 @@
         }   
 
         .nav-item:hover > a {
-            color: variables.$base-nav-hover-color;
+            color: variables.$secondary;
         }
     }
 }

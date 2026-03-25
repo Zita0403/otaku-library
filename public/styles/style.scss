@@ -63,13 +63,13 @@ header {
             font-style: normal;
             font-size: 26px;
             white-space: nowrap;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
             transition: all 0.6s ease-in-out;
             display: none;
         }
 
         h1:hover {
-            color: variables.$base-font-hover-color;
+            color: variables.$text-muted;
         }
     }
 
@@ -137,7 +137,7 @@ header {
                 right: 0px;
                 padding: 10px;
                 list-style-type: none;
-                background-color: variables.$base-mobile-nav-color;
+                background-color: variables.$accent;
                 display: flex;
                 visibility: hidden;
                 opacity: 0;
@@ -205,7 +205,7 @@ header {
 
         .login {
             text-decoration: none;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
             font-size: 25px;
             transition: all 0.5s ease-in-out;
 
@@ -219,7 +219,7 @@ header {
 
 /* Autocomplete list */
 #autocomplete-list {
-    background: variables.$base-bg-color;
+    background: variables.$bg-main;
     backdrop-filter: blur(10px);
     border: 1px solid #dee2e6;
     border-radius: 0 0 8px 8px;
@@ -329,7 +329,7 @@ header {
 }
 
 footer {
-    background-color: variables.$secondary-bg-color; 
+    background-color: variables.$bg-soft; 
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -343,10 +343,10 @@ footer {
         font-weight: 400;
         font-style: normal;
         font-size: 14px;
-        color: variables.$base-font-color;
+        color: variables.$text-main;
 
         &:hover {
-            color: variables.$base-font-hover-color;
+            color: variables.$text-muted;
             cursor: pointer;
         }
     }

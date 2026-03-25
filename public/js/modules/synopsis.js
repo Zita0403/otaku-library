@@ -1,3 +1,4 @@
+// modules/synopsis.js
 document.addEventListener('DOMContentLoaded', () => {
     const synopsisContainer = document.querySelector('.synopsis');
     const synopsisText = document.querySelector('.synopsis-text');

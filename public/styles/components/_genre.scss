@@ -3,12 +3,12 @@
 
 /* Genre */
 .genre-title {
-    font-size: 28px;
+    font-size: 18px;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    color: variables.$base-font-color;
+    color: variables.$text-main;
     margin-bottom: 20px;
 }
 
@@ -32,4 +32,10 @@
     background: variables.$primary;
     pointer-events: none; 
     box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+    .genre-title {
+        font-size: 24px;
+    }
 }

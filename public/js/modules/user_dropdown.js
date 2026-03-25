@@ -1,5 +1,5 @@
+// modules/user_dropdown.js
 // Account dropdown menu
-
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('#account-login');
     const trigger = document.querySelector('.dropdown-trigger');

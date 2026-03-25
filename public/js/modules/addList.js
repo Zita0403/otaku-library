@@ -1,3 +1,4 @@
+// modules/addList.js
 async function toggleList(animeId, title, imageUrl, listType, buttonElement) {
     buttonElement.disabled = true;
     buttonElement.style.opacity = "0.5"; 

@@ -27,7 +27,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 30px;
-    padding: 40px;
+    padding: 20px;
     width: 100%;
     max-width: 100vw;
     margin: 0 auto; 
@@ -86,7 +86,7 @@
 
     a {
         text-decoration: none;
-        color: variables.$base-font-color;
+        color: variables.$text-main;
         font-size: 18px;
         font-family: "Noto Sans JP", sans-serif;
         font-optical-sizing: auto;
@@ -109,7 +109,7 @@
             font-optical-sizing: auto;
             font-weight: 600;
             font-style: normal;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
             text-align: center;
         }
 
@@ -119,7 +119,7 @@
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
-            color: variables.$base-font-color;
+            color: variables.$text-main;
             text-align: center;
         }
     }

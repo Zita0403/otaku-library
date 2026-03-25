@@ -16,7 +16,7 @@
         width: 100%;
         margin: 0 auto;
         padding: 2rem;
-        background-color: variables.$secondary-bg-color;
+        background-color: variables.$bg-soft;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -38,15 +38,15 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: variables.$button-bg-color;
-            color: variables.$base-font-color;
+            background-color: variables.$primary;
+            color: variables.$text-main;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
 
             &:hover {
-                background-color: variables.$button-hover-bg-color;
+                background-color: variables.$bg-soft;
             }
         }
     }

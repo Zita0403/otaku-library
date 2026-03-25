@@ -1,3 +1,4 @@
+// modules/sakura.js
 const canvas = document.getElementById('sakura-canvas');
 const ctx = canvas.getContext('2d');
 

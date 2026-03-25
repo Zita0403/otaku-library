@@ -1,5 +1,5 @@
+// modules/mobile_menu.js
 // Mobile navigation sub-menu toggle
-
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.querySelector('.sub-mobile-nav-toggle');
     const subMenu = document.querySelector('.sub-mobile-nav');

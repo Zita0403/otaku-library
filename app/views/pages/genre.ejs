@@ -31,23 +31,19 @@
         <a href="<%= baseUrl %>page=1" class="btn">«</a>
         <a href="<%= baseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
     <% } %>
-
     <% 
         let startPage = Math.max(1, currentPage - 2);
-        let endPage = Math.min(lastPage, startPage + 4);
-        
+        let endPage = Math.min(lastPage, startPage + 4); 
         if (endPage - startPage < 4) {
             startPage = Math.max(1, endPage - 4);
         }
     %>
-
     <% for(let i = startPage; i <= endPage; i++) { %>
             <a href="<%= baseUrl %>page=<%= i %>" 
                class="page-num <%= i === currentPage ? 'active' : '' %>">
                 <%= i %>
             </a>
     <% } %>
-
     <% if (hasNextPage) { %>
         <a href="<%= baseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
         <a href="<%= baseUrl %>page=<%= lastPage %>" class="btn">»</a>
