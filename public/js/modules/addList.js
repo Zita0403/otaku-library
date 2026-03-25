@@ -1,4 +1,8 @@
 async function toggleList(animeId, title, imageUrl, listType, buttonElement) {
+    buttonElement.disabled = true;
+    buttonElement.style.opacity = "0.5"; 
+    buttonElement.style.cursor = "not-allowed";
+
     try {
         const response = await fetch('/api/list/toggle', {
             method: 'POST',
@@ -16,6 +20,9 @@ async function toggleList(animeId, title, imageUrl, listType, buttonElement) {
                     window.location.href = '/auth/login';
                 }
             );
+            buttonElement.disabled = false;
+            buttonElement.style.opacity = "1";
+            buttonElement.style.cursor = "pointer";
             return;
         }
 
@@ -48,6 +55,10 @@ async function toggleList(animeId, title, imageUrl, listType, buttonElement) {
         }
     } catch (err) {
         console.error('Network error:', err);
+    } finally {
+        buttonElement.disabled = false;
+        buttonElement.style.opacity = "1";
+        buttonElement.style.cursor = "pointer";
     }
 }
 

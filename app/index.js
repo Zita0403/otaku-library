@@ -124,7 +124,7 @@ app.get("/top", animeController.getToplist); // GET toplist
 app.get("/anime/:id", animeController.getAnimeDetails); // GET series details 
 app.get("/genre/:genreId/:genreName", animeController.getGenreList); // GET genre list with pagination
 app.get("/api/autocomplete", animeController.getAutocomplete); // Autocomplete API
-app.post("/search", animeController.searchAnime); // Search
+app.get("/search", animeController.searchAnime); // Search
 
 /** List actions **/
 app.post("/api/list/toggle", listController.toggleAnime); // Add/remove new anime

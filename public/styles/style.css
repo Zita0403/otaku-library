@@ -288,7 +288,7 @@
   font-size: 18px;
   color: #515177;
 }
-.details-layout .anime-info .synopsis p {
+.details-layout .anime-info .synopsis .synopsis-text {
   font-family: "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -297,6 +297,38 @@
   color: #515177;
   line-height: 1.5;
   text-align: justify;
+}
+.details-layout .anime-info .synopsis .synopsis-text.collapsed {
+  display: -webkit-box;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.details-layout .anime-info .synopsis .read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.details-layout .anime-info .synopsis .read-more-btn:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.details-layout .anime-info .synopsis .read-more-btn {
+  font-weight: bold;
+  margin-top: 5px;
+  display: inline-block;
 }
 
 @media screen and (min-width: 992px) {
@@ -1298,12 +1330,19 @@ header .header-right .login:hover {
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: #333;
-  background: white;
+  color: #000;
+  background: #F8F8F8;
   border-bottom: 1px solid #eee;
 }
 #autocomplete-list .list-group-item:hover {
-  background: rgba(255, 55, 95, 0.2352941176);
+  background: rgba(240, 109, 129, 0.4352941176);
+}
+#autocomplete-list .list-group-item .autocomplete-thumb {
+  width: 40px;
+  height: 55px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
 }
 
 /* Main */

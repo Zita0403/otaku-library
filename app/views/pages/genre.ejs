@@ -1,5 +1,5 @@
 <%- include("../partials/header.ejs") %>
-<h2 class="genre-title">Category: <%= genreName %></h2>
+<h2 class="genre-title">Category: <%= title %></h2>
 <div class="content">
     <% if (animeList && animeList.length > 0) { %>
         <% animeList.forEach(anime => { %>
@@ -22,32 +22,35 @@
     <% } %>
 </div>
 <div class="pagination">
+    <% 
+        const baseUrl = (locals.type === 'search') 
+            ? `/search?q=${encodeURIComponent(searchQuery)}&` 
+            : `/genre/${genreId}/${genreName}?`;
+    %>
     <% if (currentPage > 1) { %>
-        <a href="/genre/<%= genreId %>/<%= genreName %>?page=1" class="btn">«</a>
-        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= currentPage - 1 %>" class="btn">‹</a>
+        <a href="<%= baseUrl %>page=1" class="btn">«</a>
+        <a href="<%= baseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
     <% } %>
 
     <% 
-        // Kiszámoljuk a megjelenítendő 5 oldalt
         let startPage = Math.max(1, currentPage - 2);
         let endPage = Math.min(lastPage, startPage + 4);
         
-        // Korrigálunk, ha a lista végén lennénk
         if (endPage - startPage < 4) {
             startPage = Math.max(1, endPage - 4);
         }
     %>
 
     <% for(let i = startPage; i <= endPage; i++) { %>
-        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= i %>" 
-           class="page-num <%= i === currentPage ? 'active' : '' %>">
-            <%= i %>
-        </a>
+            <a href="<%= baseUrl %>page=<%= i %>" 
+               class="page-num <%= i === currentPage ? 'active' : '' %>">
+                <%= i %>
+            </a>
     <% } %>
 
     <% if (hasNextPage) { %>
-        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= currentPage + 1 %>" class="btn">›</a>
-        <a href="/genre/<%= genreId %>/<%= genreName %>?page=<%= lastPage %>" class="btn">»</a>
+        <a href="<%= baseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
+        <a href="<%= baseUrl %>page=<%= lastPage %>" class="btn">»</a>
     <% } %>
 </div>
 <%- include("../partials/footer.ejs") %>

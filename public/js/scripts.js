@@ -3,6 +3,7 @@ import "./modules/autocomplete_list.js"; // Search autocomplete
 import "./modules/mobile_menu.js"; // Mobile navigation
 import "./modules/addList.js"; // Add list function
 import "./modules/user_dropdown.js" // Account dropdown menu
+import "./modules/synopsis.js" // details synopsis read more 
 
 window.showModal = function(title, message, onCloseCallback) { 
     const modal = document.getElementById('customModal');

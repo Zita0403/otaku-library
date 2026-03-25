@@ -239,12 +239,19 @@ header {
         align-items: center;
         padding: 10px;
         text-decoration: none;
-        color: #333;
-        background: white;
+        color: variables.$dark;
+        background: variables.$bg-main;
         border-bottom: 1px solid #eee;
 
         &:hover {
-            background: #ff375f3c;
+            background: variables.$bg-soft;
+        }
+
+        .autocomplete-thumb {
+            width: 40px; 
+            height: 55px; 
+            object-fit: cover; 
+            border-radius: 4px;
         }
     }
 }

@@ -88,27 +88,45 @@ export const getAnimeDetails = async(req, res) => {
 }
 
 // Search
-export const searchAnime = async(req, res) => {
-    const searchTitle = req.body.title;
-    try {
-        const searchRes = await axios.get(`${JIKAN_URL}/v4/anime`, {
-            params: { q: searchTitle, limit: 1 }
-        });
-        
-        const safeResults = filterAnimeList(searchRes.data.data, req.user);
-        const slideshowRes = await axios.get(`${JIKAN_URL}/seasons/now`);
-        const safeSlideshow = filterAnimeList(slideshowRes.data.data, req.user);
+export const searchAnime = async (req, res) => {
+    const query = req.query.q; 
+    const page = parseInt(req.query.page) || 1;
+    const limit = 20;
 
-        res.render("index", { 
-            anime: safeResults[0] || null, 
-            animeList: safeSlideshow, 
-            error: safeResults.length === 0 ? "Nincs találat." : null 
+    if (!query || query.trim().length < 3) {
+        return res.redirect("/"); 
+    }
+
+    try {
+        const response = await axios.get(`${JIKAN_URL}/anime`, {
+            params: {
+                q: query,
+                page: page,
+                limit: limit
+            }
+        });
+
+        const safeSearch = filterAnimeList(response.data.data, req.user);
+        const pagination = response.data.pagination;
+
+        res.render("pages/genre", { 
+            title: `Search Results: "${query}"`,
+            animeList: safeSearch,
+            type: 'search',           
+            searchQuery: query,       
+            currentPage: page,
+            lastPage: pagination.last_visible_page,
+            hasNextPage: pagination.has_next_page,
+            genreId: null,            
+            genreName: null,
+            error: null
         });
     } catch (err) {
-        res.render("index", { 
-            anime: null, 
-            animeList: [], 
-            error: "Hiba történt." 
+        console.error("Search error:", err);
+        res.render("pages/genre", {
+            title: `Category: ${genreName}`,
+            animeList: [],
+            error: "Something went wrong during search.",
         });
     }
 };

@@ -7,7 +7,7 @@ searchInput.addEventListener('input', (e) => {
 
     clearTimeout(debounceTimer);
 
-    if (query.length < 2) {
+    if (query.length < 3) {
         autocompleteList.innerHTML = '';
         autocompleteList.style.display = 'none';
         return;
@@ -17,6 +17,10 @@ searchInput.addEventListener('input', (e) => {
         try {
             const response = await fetch(`/api/autocomplete?q=${encodeURIComponent(query)}`);
             const { data } = await response.json();
+            if (response.status === 429) {
+                console.error("Too many requests - please wait.");
+                return;
+            }
 
             autocompleteList.innerHTML = ''; 
 
@@ -30,7 +34,7 @@ searchInput.addEventListener('input', (e) => {
                     
                     item.innerHTML = `
                         <div>
-                            <img src="${anime.images.jpg.small_image_url}" style="width: 40px; height: 55px; object-fit: cover; border-radius: 4px;" class="me-3">
+                            <img src="${anime.images.jpg.small_image_url}" class="autocomplete-thumb">
                             <div>
                                 <div>${anime.title}</div>
                                 <small class="text-muted">${anime.type} (${anime.year || 'N/A'})</small>
@@ -43,7 +47,7 @@ searchInput.addEventListener('input', (e) => {
                 autocompleteList.style.display = 'none';
             }
         } catch (err) {
-            console.error("Hiba az autocomplete közben:", err);
+            console.error("Error during autocomplete:", err);
         }
     }, 500); 
 });
