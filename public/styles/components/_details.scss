@@ -1,20 +1,19 @@
 @use "../variables"; /* Colors, fonts, etc. */
 @use "../mixins"; 
-
+// Details page
 .details-layout {
     @include mixins.info-card;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;  
+    @include mixins.flex-between($direction: column, $gap: 20px);
     max-width: 80%;
     background-color: variables.$bg-soft;
     backdrop-filter: blur(10px);
+    font-family: variables.$font-main; 
+    color: variables.$text-main;
 
     .anime-poster {
         align-self: center;
         width: 100%;
         max-width: 300px;
-        border-radius: 8px;
 
         img {
             width: 100%;
@@ -29,34 +28,21 @@
         gap: 10px;
 
         h1 {
-            font-family: "Noto Sans JP", sans-serif;
-            font-optical-sizing: auto;
             font-weight: 600;
-            font-style: normal;
             font-size: 24px;
-            color: variables.$text-main;
         }
 
         p {
-            font-family: "Noto Sans JP", sans-serif;
-            font-optical-sizing: auto;
             font-weight: 400;
-            font-style: normal;
             font-size: 16px;
-            color: variables.$text-main;
-            line-height: 1.5;
         }
 
         .list-actions {
             @include mixins.flex-center($gap: 10px);
 
             h4 {
-                font-family: "Noto Sans JP", sans-serif;
-                font-optical-sizing: auto;
                 font-weight: 500;
-                font-style: normal;
                 font-size: 18px;
-                color: variables.$text-main;
             }
 
             .btn-group {
@@ -78,7 +64,6 @@
                     cursor: pointer;
                     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     font-weight: 600;
-                    font-family: variables.$text-main;
 
                     i {
                         font-size: 1.1rem;
@@ -138,25 +123,16 @@
             max-width: 600px;
 
             h3 {
-                font-family: "Noto Sans JP", sans-serif;
-                font-optical-sizing: auto;
                 font-weight: 500;
-                font-style: normal;
                 font-size: 18px;
-                color: variables.$text-main;
             }
 
             .synopsis-text {
-                font-family: "Noto Sans JP", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: 400;
-                font-style: normal;
-                font-size: 16px;
-                color: variables.$text-main;
                 line-height: 1.5;
                 text-align: justify;
 
                 &.collapsed {
+                    @include mixins.text-truncate($lines: 5);
                     display: -webkit-box;
                     line-clamp: 5;
                     -webkit-line-clamp: 5;
@@ -169,14 +145,11 @@
                 @include mixins.button-style;
                 font-weight: bold;
                 margin-top: 5px;
-                display: inline-block;
             }
         }
     }
-}
 
-@media screen and (min-width: 992px) {
-    .details-layout {
+    @media screen and (min-width: 992px) {
         flex-direction: row;
         max-width: 90%;
         padding: 15px;
@@ -190,19 +163,14 @@
                 font-size: 20px;
             }
 
-            p {
+            p, .synopsis-text {
                 font-size: 14px;
             }
 
-            .synopsis {
-                h3 {
-                    font-size: 16px;
-                }
-
-                p {
-                    font-size: 14px;
-                }
+            .synopsis h3 {
+                font-size: 16px;
             }
         }
+        
     }
 }

@@ -5,14 +5,12 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 20px;
     padding: 0 20px;
     align-items: start;
     
-
     .account-sidebar {
-    position: relative;
-    top: 100px;
+        position: relative;
+        top: 100px;
 
         .user-info-card {
             @include mixins.info-card;
@@ -47,7 +45,7 @@
             .sidebar-stats {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                margin-bottom: 25px;
+                gap: 15px;
 
                 .stat-item {
                     display: flex;
@@ -79,7 +77,6 @@
         }
     }
 
-    
     .account-main {
         .section-title {
             font-size: 24px;
@@ -152,7 +149,6 @@
             }
         }
 
-        // LISTÁK (Vízszintes görgető)
         .list-container {
             margin-bottom: 40px;
 
@@ -251,10 +247,8 @@
             }
         }
     }
-}
 
-@media screen and (min-width: 992px) {
-    .account-container {
+    @media screen and (min-width: 992px) {
         grid-template-columns: 300px 1fr;
 
         .account-sidebar {

@@ -34,7 +34,7 @@ export const register = async(req, res, next) => {
 
 // Login
 export const login = passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/auth/account",
     failureRedirect: "/login",
 });
 

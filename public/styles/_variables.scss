@@ -7,7 +7,7 @@ $accent:            rgb(234, 169, 182);
 
 // Neutrals
 $bg-main:           #F8F8F8;
-$bg-soft:           #f06d816f;
+$bg-soft:           rgba(240, 109, 129, 0.435);
 $text-main:         #515177;
 $text-muted:        #76778C;
 $overlay:           rgba(0, 0, 0, 0.5);
@@ -21,6 +21,7 @@ $btn-text:          #FFFFFF;
 
 // Tipography
 $font-main:         'Noto Sans JP', sans-serif;
+$font-nav:          'Montserrat', sans-serif;
 $transition:        all 0.3s ease;
 $radius-sm:         4px;
 $radius-md:         8px;

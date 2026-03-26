@@ -10,62 +10,61 @@
         display: none;
     }
     .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 30px;
+        @include mixins.flex-between($direction: row, $gap: 30px, $justify-content: space-between, $align-items: flex-start);
         list-style-type: none;
         
         a {
             text-decoration: none;
-            color: variables.$primary;
-            font-size: 18px;
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
+            color: variables.$nav-link;
+            font: 600 18px variables.$font-nav;
             transition: color 0.6s ease-in-out;
-        }
 
-        .nav-item {
-            padding: 10px;
-        }
-
-        .sub-nav {
-            min-width: 600px;
-            display: none;
-            grid-template-columns: repeat(3, 1fr);
-            position: absolute;
-            background-color: variables.$accent;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            list-style-type: none;
-            max-height: 400px;
-            overflow-y: auto;
-
-            li {
-                margin-bottom: 5px;
-                width: 100%;
-
-                a {
-                    font-size: 18px;
-                    color: variables.$primary;
-                    display: block;
-                }
-
-                a:hover {
-                    color: variables.$secondary;
-                }
+            &:hover { 
+                color: variables.$nav-hover; 
             }
         }
 
-        .nav-item:hover > .sub-nav {
-            display: grid;
-        }   
+        .nav-item {
+            padding: 10px 15px;
+            position: relative;
 
-        .nav-item:hover > a {
-            color: variables.$secondary;
+            &:hover > .sub-nav {
+                display: grid;
+            } 
+
+            .sub-nav {
+                @include mixins.custom-scrollbar;
+                min-width: 600px;
+                display: none;
+                grid-template-columns: repeat(3, 1fr);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: variables.$accent;
+                padding: 10px;
+                border-radius: variables.$radius-sm;
+                box-shadow: variables.$shadow-md;
+                padding-top: 10px;
+                z-index: 10;
+                list-style-type: none;
+                max-height: 400px;
+                overflow-y: auto;
+
+                li {
+                    margin-bottom: 5px;
+                    width: 100%;
+
+                    a {
+                        font-size: 16px;
+                        color: variables.$nav-link;
+                        display: block;
+                    }
+
+                    a:hover {
+                        color: variables.$nav-hover;
+                    }
+                }
+            }
         }
     }
 }

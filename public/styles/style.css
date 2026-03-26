@@ -30,12 +30,6 @@
 /* Colors, fonts, etc. */
 /* Colors, fonts, etc. */
 /* Mobile Navigation */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 .mobile-nav {
   background-color: rgb(234, 169, 182);
   position: fixed;
@@ -51,12 +45,13 @@
 .mobile-nav .nav-item {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 0px;
   text-align: center;
   text-decoration: none;
   color: #FF375E;
-  gap: 5px;
   font-size: 25px;
   width: 50px;
   height: 50px;
@@ -69,7 +64,31 @@
   border-radius: 50%;
   transform: translateY(-5px);
 }
+.mobile-nav .sub-mobile-nav::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.mobile-nav .sub-mobile-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mobile-nav .sub-mobile-nav::-webkit-scrollbar-thumb {
+  background: #FF375E;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.mobile-nav .sub-mobile-nav::-webkit-scrollbar-thumb:hover {
+  background: #000072;
+}
+.mobile-nav .sub-mobile-nav::-webkit-scrollbar-button {
+  background-color: rgb(234, 169, 182);
+  height: 10px;
+  width: 10px;
+  border-radius: 2px;
+}
 .mobile-nav .sub-mobile-nav {
+  scrollbar-width: thin;
+  scrollbar-color: #FF375E transparent;
   display: none;
   position: absolute;
   bottom: 60px;
@@ -87,9 +106,9 @@
   display: flex;
 }
 .mobile-nav .sub-mobile-nav a {
+  font: 600 18px "Montserrat", sans-serif;
   text-decoration: none;
   color: #FF375E;
-  font-size: 18px;
 }
 .mobile-nav .sub-mobile-nav a:hover {
   color: #000072;
@@ -108,53 +127,79 @@
   }
   .nav {
     display: flex;
+    gap: 30px;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px;
     list-style-type: none;
   }
   .nav a {
     text-decoration: none;
     color: #FF375E;
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+    font: 600 18px "Montserrat", sans-serif;
     transition: color 0.6s ease-in-out;
   }
-  .nav .nav-item {
-    padding: 10px;
-  }
-  .nav .sub-nav {
-    min-width: 600px;
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    position: absolute;
-    background-color: rgb(234, 169, 182);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    list-style-type: none;
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  .nav .sub-nav li {
-    margin-bottom: 5px;
-    width: 100%;
-  }
-  .nav .sub-nav li a {
-    font-size: 18px;
-    color: #FF375E;
-    display: block;
-  }
-  .nav .sub-nav li a:hover {
+  .nav a:hover {
     color: #000072;
+  }
+  .nav .nav-item {
+    padding: 10px 15px;
+    position: relative;
   }
   .nav .nav-item:hover > .sub-nav {
     display: grid;
   }
-  .nav .nav-item:hover > a {
+  .nav .nav-item .sub-nav::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  .nav .nav-item .sub-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .nav .nav-item .sub-nav::-webkit-scrollbar-thumb {
+    background: #FF375E;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .nav .nav-item .sub-nav::-webkit-scrollbar-thumb:hover {
+    background: #000072;
+  }
+  .nav .nav-item .sub-nav::-webkit-scrollbar-button {
+    background-color: rgb(234, 169, 182);
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+  }
+  .nav .nav-item .sub-nav {
+    scrollbar-width: thin;
+    scrollbar-color: #FF375E transparent;
+    min-width: 600px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(234, 169, 182);
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    padding-top: 10px;
+    z-index: 10;
+    list-style-type: none;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .nav .nav-item .sub-nav li {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .nav .nav-item .sub-nav li a {
+    font-size: 16px;
+    color: #FF375E;
+    display: block;
+  }
+  .nav .nav-item .sub-nav li a:hover {
     color: #000072;
   }
 }
@@ -165,18 +210,22 @@
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
   display: flex;
-  flex-direction: column;
   gap: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   max-width: 80%;
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   backdrop-filter: blur(10px);
+  font-family: "Noto Sans JP", sans-serif;
+  color: #515177;
 }
 .details-layout .anime-poster {
   align-self: center;
   width: 100%;
   max-width: 300px;
-  border-radius: 8px;
 }
 .details-layout .anime-poster img {
   width: 100%;
@@ -189,21 +238,12 @@
   gap: 10px;
 }
 .details-layout .anime-info h1 {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 600;
-  font-style: normal;
   font-size: 24px;
-  color: #515177;
 }
 .details-layout .anime-info p {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
   font-size: 16px;
-  color: #515177;
-  line-height: 1.5;
 }
 .details-layout .anime-info .list-actions {
   display: flex;
@@ -214,12 +254,8 @@
   margin: 40px 0;
 }
 .details-layout .anime-info .list-actions h4 {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
   font-size: 18px;
-  color: #515177;
 }
 .details-layout .anime-info .list-actions .btn-group {
   display: flex;
@@ -240,7 +276,6 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-weight: 600;
-  font-family: #515177;
 }
 .details-layout .anime-info .list-actions .btn-group .action-btn i {
   font-size: 1.1rem;
@@ -284,24 +319,19 @@
   max-width: 600px;
 }
 .details-layout .anime-info .synopsis h3 {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
   font-size: 18px;
-  color: #515177;
 }
 .details-layout .anime-info .synopsis .synopsis-text {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  color: #515177;
   line-height: 1.5;
   text-align: justify;
 }
 .details-layout .anime-info .synopsis .synopsis-text.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: -webkit-box;
   line-clamp: 5;
   -webkit-line-clamp: 5;
@@ -331,9 +361,7 @@
 .details-layout .anime-info .synopsis .read-more-btn {
   font-weight: bold;
   margin-top: 5px;
-  display: inline-block;
 }
-
 @media screen and (min-width: 992px) {
   .details-layout {
     flex-direction: row;
@@ -346,16 +374,14 @@
   .details-layout .anime-info h1 {
     font-size: 20px;
   }
-  .details-layout .anime-info p {
+  .details-layout .anime-info p, .details-layout .anime-info .synopsis-text {
     font-size: 14px;
   }
   .details-layout .anime-info .synopsis h3 {
     font-size: 16px;
   }
-  .details-layout .anime-info .synopsis p {
-    font-size: 14px;
-  }
 }
+
 /* Details */
 /* Colors, fonts, etc. */
 .slideshow {
@@ -376,7 +402,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 13px;
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   backdrop-filter: blur(10px);
   width: 240px;
   overflow: hidden;
@@ -440,6 +466,7 @@
   height: 380px;
   cursor: pointer;
   animation: stackSlide 15s linear infinite;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s ease;
 }
 .slideshow .anime-card:nth-child(1) {
   animation-delay: 0s;
@@ -456,10 +483,6 @@
 .slideshow .anime-card:nth-child(5) {
   animation-delay: 12s;
 }
-.slideshow .anime-card:hover {
-  animation-play-state: paused;
-  z-index: 100;
-}
 .slideshow .anime-card .card-image-wrapper {
   height: 100%;
   width: 100%;
@@ -473,47 +496,12 @@
   display: block;
 }
 .slideshow .anime-card .card-body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-  color: white;
-  padding: 20px 15px;
-  text-align: left;
-  border-radius: 0 0 8px 8px;
+  display: none;
 }
-.slideshow .anime-card .card-body h5 {
-  font-size: 18px;
-  margin: 0 0 5px 0;
-  color: white;
-}
-.slideshow .anime-card .card-body p {
-  font-size: 13px;
-  margin: 2px 0;
-  color: #ddd;
-}
-@keyframes stackSlide {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-    z-index: 10;
-  }
-  2%, 20% {
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 10;
-  }
-  25% {
-    transform: translateY(-110%);
-    opacity: 0;
-    z-index: 1;
-  }
-  26%, 100% {
-    transform: translateY(0);
-    opacity: 0;
-    z-index: 1;
-  }
+.slideshow .anime-card:hover {
+  animation-play-state: paused;
+  z-index: 100;
+  transform: translateY(0);
 }
 
 @media screen and (min-width: 576px) {
@@ -537,21 +525,18 @@
   .slideshow {
     flex-direction: row;
     gap: 15px;
-    top: 30px;
-    width: 100%;
-    max-width: 100vw;
+    max-width: 1200px;
     height: 500px;
     perspective: 1000px;
     animation: none;
-    position: relative;
     padding: 0 20px;
+    overflow: visible;
   }
   .slideshow .anime-card {
+    animation: none;
     position: relative;
     opacity: 1;
-    animation: none;
     width: 240px;
-    height: 380px;
     transform: none;
     flex: 0 1 auto;
     transition: transform 0.3s ease;
@@ -560,7 +545,6 @@
   }
   .slideshow .anime-card .card-image-wrapper {
     height: 380px;
-    width: 100%;
     transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .slideshow .anime-card .card-image-wrapper img {
@@ -569,9 +553,16 @@
   }
   .slideshow .anime-card .card-body {
     position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
     background-color: #000;
     backdrop-filter: blur(4px);
-    height: 0;
+    color: white;
+    padding: 20px 15px;
+    text-align: left;
+    border-radius: 0 0 8px 8px;
     transform: translateY(100%);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
@@ -581,23 +572,67 @@
     justify-content: flex-start;
     padding: 15px;
   }
+  .slideshow .anime-card .card-body h5 {
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    color: white;
+  }
+  .slideshow .anime-card .card-body p {
+    font-size: 13px;
+    margin: 2px 0;
+    color: #ddd;
+  }
   .slideshow .anime-card:hover {
     height: 380px;
-    transform: translateY(-10px);
     z-index: 50;
-    box-shadow: none;
+    transform: translateY(-10px) scale(1.02);
+    animation: pulse-glow 2.5s infinite alternate ease-in-out;
   }
   .slideshow .anime-card:hover .card-image-wrapper {
     height: 180px;
   }
   .slideshow .anime-card:hover .card-image-wrapper img {
-    filter: grayscale(10px);
     transform: translateY(0);
+    filter: brightness(1);
   }
   .slideshow .anime-card:hover .card-body {
+    height: 200px;
     top: 180px;
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes stackSlide {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+    z-index: 10;
+  }
+  2%, 20% {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 10;
+  }
+  25% {
+    transform: translateY(-110%);
+    opacity: 0;
+    z-index: 1;
+  }
+  26%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+    z-index: 1;
+  }
+}
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(240, 109, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px #f06d81;
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(240, 109, 129, 0.5);
   }
 }
 /* Slideshow */
@@ -611,6 +646,11 @@
   font-style: normal;
   color: #515177;
   margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .genre-title {
+    font-size: 24px;
+  }
 }
 
 .content {
@@ -629,7 +669,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 13px;
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   backdrop-filter: blur(10px);
   width: 240px;
   overflow: hidden;
@@ -696,8 +736,7 @@
   gap: 5px;
   margin: 40px 0;
 }
-
-.page-num, .btn {
+.pagination .page-num, .pagination .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -713,22 +752,16 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.page-num:hover, .btn:hover {
+.pagination .page-num:hover, .pagination .btn:hover {
   background-color: #f06d81;
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
-
-.page-num.active {
+.pagination.active {
   background: #FF375E;
   pointer-events: none;
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
 
-@media screen and (min-width: 768px) {
-  .genre-title {
-    font-size: 24px;
-  }
-}
 /* Genre */
 /* Colors, fonts, etc. */
 .toplist-layout {
@@ -748,7 +781,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 13px;
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   backdrop-filter: blur(10px);
   width: 240px;
   overflow: hidden;
@@ -811,29 +844,37 @@
 /* Colors, fonts, etc. */
 .auth-container {
   width: 18rem;
+  margin: 0 auto;
 }
 .auth-container #login-form,
 .auth-container #register-form {
   height: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
+  margin: 0;
   justify-content: space-around;
   gap: 20px;
-  padding: 15px;
+  padding: 2rem;
   width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .auth-container #login-form form,
 .auth-container #register-form form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
+  margin: 0;
   width: 100%;
+  align-items: flex-start;
 }
 .auth-container #login-form input,
 .auth-container #register-form input {
@@ -841,36 +882,53 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
 }
 .auth-container #login-form button,
 .auth-container #register-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #FF375E;
-  color: #515177;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  background-color: #000;
+  color: #FFFFFF;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .auth-container #login-form button:hover,
 .auth-container #register-form button:hover {
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
-
+.auth-container #login-form button,
+.auth-container #register-form button {
+  width: 100%;
+  font-size: 16px;
+}
+.auth-container #login-form button:hover,
+.auth-container #register-form button:hover {
+  background-color: #f06d81;
+  color: white;
+}
 @media screen and (min-width: 768px) {
   .auth-container {
     width: 22rem;
   }
 }
+
 /* Login */
 /* Colors, fonts, etc. */
 .account-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  padding: 20px;
   padding: 0 20px;
   align-items: start;
 }
@@ -883,6 +941,7 @@
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
   background: white;
   text-align: center;
 }
@@ -910,7 +969,7 @@
 .account-container .account-sidebar .user-info-card .sidebar-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 25px;
+  gap: 15px;
 }
 .account-container .account-sidebar .user-info-card .sidebar-stats .stat-item {
   display: flex;
@@ -1126,7 +1185,6 @@
   color: #76778C;
   font-style: italic;
 }
-
 @media screen and (min-width: 992px) {
   .account-container {
     grid-template-columns: 300px 1fr;
@@ -1135,6 +1193,7 @@
     position: sticky;
   }
 }
+
 /* Account */
 /*Colors */
 * {
@@ -1343,7 +1402,7 @@ header .header-right .login:hover {
   border-bottom: 1px solid #eee;
 }
 #autocomplete-list .list-group-item:hover {
-  background: rgba(240, 109, 129, 0.4352941176);
+  background: rgba(240, 109, 129, 0.435);
 }
 #autocomplete-list .list-group-item .autocomplete-thumb {
   width: 40px;
@@ -1439,7 +1498,7 @@ header .header-right .login:hover {
 }
 
 footer {
-  background-color: rgba(240, 109, 129, 0.4352941176);
+  background-color: rgba(240, 109, 129, 0.435);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;

@@ -3,57 +3,50 @@
 
 .auth-container {
     width: 18rem;
+    margin: 0 auto;
     
     #login-form, 
     #register-form {
         height: 450px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include mixins.flex-center($direction: column, $gap: 20px, $margin: 0);
         justify-content: space-around;
         gap:20px;
-        padding: 15px;
+        padding: 2rem;
         width: 100%;
         margin: 0 auto;
         padding: 2rem;
         background-color: variables.$bg-soft;
         border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: variables.$shadow-md;
 
         form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            @include mixins.flex-center($direction: column, $gap: 15px, $margin: 0);
             width: 100%;
+            align-items: flex-start;
         }
 
         input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 8px;
+            border-radius: variables.$radius-md;
+            font-family: variables.$font-main;
             font-size: 16px;
         }
 
         button {
+            @include mixins.button-style;
             width: 100%;
-            padding: 10px;
-            background-color: variables.$primary;
-            color: variables.$text-main;
-            border: none;
-            border-radius: 8px;
             font-size: 16px;
-            cursor: pointer;
 
             &:hover {
-                background-color: variables.$bg-soft;
+                background-color: variables.$primary-light; 
+                color: white;
             }
         }
     }
-}
 
-@media screen and (min-width: 768px) {
-    .auth-container {
+    @media screen and (min-width: 768px) {
         width: 22rem;
     }
 }

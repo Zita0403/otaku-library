@@ -1,5 +1,6 @@
 @use "../variables"; /* Colors, fonts, etc. */
 @use "../mixins"; 
+// Toplist
 .toplist-layout {
     @include mixins.grid-main-content-layout;
 }

@@ -1,15 +1,18 @@
 @use "../variables"; /* Colors, fonts, etc. */
 @use "../mixins"; 
-
 /* Genre */
 .genre-title {
     font-size: 18px;
-    font-family: "Montserrat", sans-serif;
+    font-family: variables.$font-nav;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     color: variables.$text-main;
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+    }
 }
 
 .content {
@@ -22,20 +25,14 @@
 
 .pagination {
     @include mixins.flex-center($gap: 5px, $margin: 40px 0);
-}
 
-.page-num, .btn {
-    @include mixins.button-style;
-}
+    .page-num, .btn {
+        @include mixins.button-style;
+    }
 
-.page-num.active {
-    background: variables.$primary;
-    pointer-events: none; 
-    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-}
-
-@media screen and (min-width: 768px) {
-    .genre-title {
-        font-size: 24px;
+    &.active {
+        background: variables.$primary;
+        pointer-events: none; 
+        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
     }
 }

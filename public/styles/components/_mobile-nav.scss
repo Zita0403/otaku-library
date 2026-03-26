@@ -1,12 +1,6 @@
 @use "../variables"; /* Colors, fonts, etc. */
 @use "../mixins"; 
 /* Mobile Navigation */
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;    
-}
-
 .mobile-nav {
     background-color: variables.$accent;
     position: fixed;
@@ -20,14 +14,10 @@
     z-index: 1000;
 
     .nav-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+        @include mixins.flex-center($gap: 5px, $margin: 0px);
         text-align: center;
         text-decoration: none;
         color: variables.$primary;
-        gap: 5px;
         font-size: 25px;
         width: 50px; 
         height: 50px;
@@ -35,7 +25,7 @@
         position: relative;
 
         &:hover {
-            color: variables.$secondary;
+            color: variables.$nav-hover;
             background-color: rgba(237, 219, 240, 0.667);
             border-radius: 50%;
             transform: translateY(-5px);
@@ -43,6 +33,7 @@
     }
 
     .sub-mobile-nav {
+        @include mixins.custom-scrollbar;
         display: none;
         position: absolute;
         bottom: 60px;
@@ -61,12 +52,12 @@
         }
 
         a {
+            font: 600 18px variables.$font-nav;
             text-decoration: none;
-            color: variables.$primary;
-            font-size: 18px;
+            color: variables.$nav-link;
 
             &:hover {
-                color: variables.$secondary;
+                color: variables.$nav-hover;
             }
         }
     }
