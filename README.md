@@ -109,6 +109,8 @@ npm start
 
 ## Weboldal elérése
 
+A projekt élőben is megtekinthető az alábbi linken: [Nézd meg élőben!](https://otakulibrary.zita.dev)
+
 - [Főoldal megnyitása:](http://localhost:3000/)
 - [Regisztráció:](http://localhost:3000/auth/register)
 

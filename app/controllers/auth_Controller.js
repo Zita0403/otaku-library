@@ -35,7 +35,8 @@ export const register = async(req, res, next) => {
 // Login
 export const login = passport.authenticate("local", {
     successRedirect: "/auth/account",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
+    failureFlash: true
 });
 
 // Logout
@@ -61,10 +62,15 @@ export const logout = async (req, res, next) => {
 
 // GET login page 
 export const getLoginPage = (req, res) => {
-    const errorMessage = req.query.error === 'invalid_credentials' 
-        ? "Incorrect username or password!" 
-        : null;
-        
+    const flashError = req.flash("error");
+    
+    let errorMessage = null;
+    if (flashError && flashError.length > 0) {
+        errorMessage = flashError[0]; // A Strategy-ben megadott "User not found" stb.
+    } else if (req.query.error === 'invalid_credentials') {
+        errorMessage = "Incorrect username or password!";
+    }
+
     res.render("auth/login", { error: errorMessage, user: req.user });
 };
 

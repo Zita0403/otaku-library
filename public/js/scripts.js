@@ -4,6 +4,9 @@ import "./modules/mobile_menu.js"; // Mobile navigation
 import "./modules/addList.js"; // Add list function
 import "./modules/user_dropdown.js" // Account dropdown menu
 import "./modules/synopsis.js" // Details synopsis read more 
+import "./modules/mobile_search.js" // Mobile search focus
+import "./modules/mobile_login.js" // Mobile login focus
+import "./modules/show_more.js" // Show more lists in account page
 
 window.showModal = function(title, message, onCloseCallback) { 
     const modal = document.getElementById('customModal');

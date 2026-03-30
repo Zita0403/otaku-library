@@ -52,7 +52,6 @@
             </div>
         </section>
 
-        <!-- LISTÁK SZAKASZ -->
         <section class="lists-section">
             <h3 class="section-title">My Anime Library</h3>
             
@@ -68,25 +67,33 @@
                         <h4><i class="fa-solid <%= section.icon %>"></i> <%= section.title %></h4>
                         <span class="count"><%= lists[section.id].length %> items</span>
                     </div>
-                    
-                    <div class="anime-scroll-row">
-                        <% if (lists[section.id].length > 0) { %>
-                            <% lists[section.id].forEach(item => { %>
-                                <div class="mini-anime-card">
-                                    <a href="/anime/<%= item.anime_id %>">
-                                        <div class="img-container">
-                                            <img src="<%= item.anime_image %>" alt="<%= item.anime_title %>">
-                                        </div>
-                                        <div class="mini-card-info">
-                                            <h6 title="<%= item.anime_title %>"><%= item.anime_title %></h6>
-                                        </div>
-                                    </a>
+                        
+                    <div class="slider-wrapper">
+                        <% if (lists[section.id].length > 1) { %>
+                            <button class="slider-arrow left-arrow"><i class="fa-solid fa-chevron-left"></i></button>
+                        <% } %>
+                        <div class="anime-scroll-row">
+                            <% if (lists[section.id].length > 0) { %>
+                                <% lists[section.id].forEach(item => { %>
+                                    <div class="mini-anime-card">
+                                        <a href="/anime/<%= item.anime_id %>">
+                                            <div class="img-container">
+                                                <img src="<%= item.anime_image %>" alt="<%= item.anime_title %>">
+                                            </div>
+                                            <div class="mini-card-info">
+                                                <h6 title="<%= item.anime_title %>"><%= item.anime_title %></h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <% }); %>
+                            <% } else { %>
+                                <div class="empty-list">
+                                    <p>This list is currently empty.</p>
                                 </div>
-                            <% }); %>
-                        <% } else { %>
-                            <div class="empty-list">
-                                <p>This list is currently empty.</p>
-                            </div>
+                            <% } %>
+                        </div>
+                        <% if (lists[section.id].length > 1) { %>
+                            <button class="slider-arrow right-arrow"><i class="fa-solid fa-chevron-right"></i></button>
                         <% } %>
                     </div>
                 </div>

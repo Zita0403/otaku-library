@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/otaku.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -42,49 +42,58 @@
             </ul> 
         </div>
 
-        <div class="header-center">
-            <form role="search" action="/search" method="GET"> 
-                <input class="search" type="search" name="q" placeholder="Search..."> 
-                <div id="autocomplete-list"></div>
-            </form>
+        <div class="header-row">
+            <div class="header-center">
+                <form role="search" action="/search" method="GET"> 
+                    <input class="search" type="search" name="q" placeholder="Search..."> 
+                    <div id="autocomplete-list"></div>
+                </form>
+            </div>
+
+        <% if (!locals.user) { %>
+            <a href="#" class="mobile-nav-toggle">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>  
+            </a>
+        <% } %>
+
+            <div class="header-right">
+                <a href="https://github.com/Zita0403/otaku-library">
+                    <i class="fa-brands fa-github github-icon"></i>
+                </a>
+                <div id="account-login">
+                <% if (locals.user) { %>
+                <div class="user-dropdown">
+                    <div class="dropdown-trigger">
+                        <span><%= user.user_name %></span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">
+                            <strong><%= user.user_name %></strong><br>
+                            <small><%= user.email %></small>
+                        </li>
+                        <hr>
+                        <li><a href="/auth/account#settings"><i class="fa-solid fa-user"></i> Profile</a></li>
+                        <li><a href="/auth/account"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                        <hr>
+                        <li><a href="/auth/logout" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                    </ul>
+                </div>
+                    <% } else { %>
+                        <div class="auth-group">
+                            <a href="/auth/login" id="login">
+                                <p>Sign in</p>
+                            </a>
+                            <span>/</span>
+                            <a href="/auth/register" id="register">
+                                <p>Sign up</p>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div> 
         </div>
 
-        <div class="header-right">
-            <a href="https://github.com/Zita0403/otaku-library">
-                <i class="fa-brands fa-github github-icon"></i>
-            </a>
-            <div id="account-login">
-            <% if (locals.user) { %>
-            <div class="user-dropdown">
-                <div class="dropdown-trigger">
-                    <span><%= user.user_name %></span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-header">
-                        <strong><%= user.user_name %></strong><br>
-                        <small><%= user.email %></small>
-                    </li>
-                    <hr>
-                    <li><a href="/auth/account#settings"><i class="fa-solid fa-user"></i> Profile</a></li>
-                    <li><a href="/auth/account"><i class="fa-solid fa-gear"></i> Settings</a></li>
-                    <hr>
-                    <li><a href="/auth/logout" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
-                </ul>
-            </div>
-                <% } else { %>
-                    <div class="auth-group">
-                        <a href="/auth/login" id="login">
-                            <p>Sign in</p>
-                        </a>
-                        <span>/</span>
-                        <a href="/auth/register" id="register">
-                            <p>Sign up</p>
-                        </a>
-                    </div>
-                <% } %>
-            </div>
-        </div> 
     </header>
     <nav class="mobile-nav">
         <a href="/" class="nav-item">
@@ -102,7 +111,7 @@
                 <% }); %>
             </ul>
         </div>
-        <label for="search-input-id" class="nav-item" onclick="document.querySelector('.search').focus()">
+        <label for="search-input-id" class="nav-item search-button">
             <i class="fa-solid fa-magnifying-glass"></i>
         </label>
     </nav>

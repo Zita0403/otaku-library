@@ -1,7 +1,7 @@
 @use "../variables"; /* Colors, fonts, etc. */
 @use "../mixins"; 
 .slideshow {
-    @include mixins.flex-center($direction: column, $gap: 0px, $margin: 40px 0);
+    @include mixins.flex-center($direction: column, $gap: 0px, $margin: 0);
     position: relative;
     height: 450px;
     width: 100%;
@@ -12,7 +12,7 @@
         @include mixins.anime-card-basic;
         position: absolute;
         width: 70%;
-        height: 380px; 
+        height: auto; 
         cursor: pointer;
         animation: stackSlide 15s linear infinite;
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s ease;

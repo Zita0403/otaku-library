@@ -2,6 +2,11 @@
 <div class="auth-container">
     <div id="login-form">
         <h2>Sign in</h2>
+        <% if (locals.error && error.length > 0) { %>
+            <div style="color: white; background: rgba(255,0,0,0.5); padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                <%= error %>
+            </div>
+        <% } %>
         <form action="/auth/login" method="POST"> 
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>

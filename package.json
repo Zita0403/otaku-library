@@ -3,25 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {},
   "keywords": [],
   "author": "Zita Lukács",
   "license": "ISC",
   "devDependencies": {
-      "axios": "^1.11.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0"
+  },
+  "dependencies": {
+    "axios": "^1.14.0",
     "bcrypt": "^6.0.0",
-    "body-parser": "^2.2.0",
+    "body-parser": "^2.2.2",
     "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.3.1",
     "ejs": "^3.1.10",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "express-session": "^1.19.0",
     "helmet": "^8.1.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.20.0",
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.4.0"
+    "connect-flash": "^0.1.1"
   }
 }

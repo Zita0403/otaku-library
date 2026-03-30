@@ -7,6 +7,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import session from 'express-session';
+import flash from "connect-flash";
 import pgSession from 'connect-pg-simple';
 import helmet from 'helmet';
 import passport from 'passport';
@@ -78,6 +79,9 @@ app.use(session({
         secure: process.env.NODE_ENV === 'production'
     } 
 }));
+
+// Flash initialization
+app.use(flash());
 
 // Passport.js setup
 app.use(passport.initialize());

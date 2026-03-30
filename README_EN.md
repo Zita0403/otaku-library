@@ -109,6 +109,9 @@ npm start
 
 ## Accessing the Website
 
+Live Demo
+The project is available live at the following link: **[otakulibrary.zita.dev](https://otakulibrary.zita.dev)**
+
 - [Open Home page:](http://localhost:3000/)
 - [Sign up page](http://localhost:3000/auth/register)
 

@@ -26,7 +26,7 @@ export default function(passport) {
                     }
                 });
             } else {
-                return cb("User not found");
+                return cb(null, false, { message: "User not found. Please register first!" });
             }
         } catch (err) {
             return cb(err);
