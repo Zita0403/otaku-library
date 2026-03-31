@@ -16,15 +16,16 @@
     "axios": "^1.14.0",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.2",
+    "connect-flash": "^0.1.1",
     "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.3.1",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
     "helmet": "^8.1.0",
+    "nodemailer": "^8.0.4",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.20.0",
-    "connect-flash": "^0.1.1"
+    "pg": "^8.20.0"
   }
 }

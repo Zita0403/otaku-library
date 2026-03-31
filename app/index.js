@@ -18,6 +18,7 @@ import passportConfig from "./config/passport.js";
 import * as listController from "./controllers/list_Controller.js";
 import * as authController from "./controllers/auth_Controller.js";
 import * as animeController from "./controllers/anime_Controller.js";
+import * as adminController from "./controllers/admin_Controller.js";
 
 // Express app setup
 const app = express();
@@ -111,6 +112,16 @@ app.use((req, res, next) => {
     next();
 });
 
+// Admin middleware for all /admin routes
+app.use("/auth/admin", authController.isAdmin); 
+
+// Admin routes
+app.get("/auth/dashboard", authController.isAdmin, adminController.getDashboard); 
+app.post("/auth/sendInvite", authController.isAdmin, adminController.postInvite);
+app.post("/auth/deleteInvite/:code", authController.isAdmin, adminController.deleteInvite);
+app.get("/privacy", authController.getPrivacyPage);
+app.post("/admin/update-privacy", adminController.updatePrivacy);
+
 /** Auth routes **/ 
 app.get("/auth/register", authController.getRegisterPage); // GET register page
 app.get("/auth/login", authController.getLoginPage); // GET login page
@@ -121,6 +132,7 @@ app.post("/auth/login", authController.login); // Login
 /** Account & settings **/
 app.get("/auth/account", authController.accountPage); // Account
 app.post("/auth/toggle-nsfw", authController.toggleNSFW); // Adult content 
+app.post("/auth/deleteAccount", authController.deleteAccount);
 
 /** Anime routes **/ 
 app.get("/", animeController.getSeasonalList); // GET main page with slideshow

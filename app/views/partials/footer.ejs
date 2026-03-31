@@ -7,14 +7,23 @@
             </div>
             <div class="modal-body">
                 <p id="modalMessage"></p>
+                
+                <form id="modalActionForm" action="/auth/deleteAccount" method="POST" style="display: none; width: 100%;">
+                    <input type="password" name="password" placeholder="Enter your password" required 
+                        style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ddd; border-radius: 4px; display: block;">
+                    <div class="modal-footer" style="padding-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
+                        <button type="button" id="modalCancelBtn" class="modal-btn secondary">Cancel</button>
+                        <button type="submit" class="modal-btn danger" style="background: #ff4757; color: white; border: none; padding: 8px 15px; border-radius: 4px;">Confirm Delete</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
+            <div id="defaultFooter" class="modal-footer">
                 <button class="modal-btn" id="modalCloseBtn">Got it</button>
             </div>
         </div>
     </div>
     <footer>       
-        <p>© Otaku Library. All rights reserved.</p>  
+        <p>© Otaku Library. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>  
     </footer>
     <script type="module" src="/js/scripts.js"></script>
 </body>

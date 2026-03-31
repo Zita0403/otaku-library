@@ -1,0 +1,10 @@
+<%- include("../partials/header.ejs") %>
+<div class="privacy-container">
+    <h1>Privacy Policy</h1>
+    <p class="text-muted">Last Updated: <%= new Date(lastUpdated).toLocaleDateString('en-US') %></p>
+    <hr>
+    <div class="policy-content">
+        <%- content %>
+    </div>
+</div>
+<%- include("../partials/footer.ejs") %>

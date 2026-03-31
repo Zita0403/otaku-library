@@ -30,6 +30,6 @@ export const toggleAnime = async (req, res) => {
         }
     } catch (err) {
         console.error("Database error during toggle:", err);
-        res.status(500).json({ error: "Szerver hiba történt." });
+        res.status(500).json({ error: "A server error has occurred." });
     }   
 }

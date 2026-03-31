@@ -21,7 +21,7 @@ export default function(passport) {
                         if (result) {
                             return cb(null, user);
                         } else {
-                            return cb(null, false);
+                            return cb(null, false, { message: "Incorrect username or password." });
                         }
                     }
                 });

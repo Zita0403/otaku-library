@@ -70,6 +70,32 @@
                 }
             }
 
+            .btn-danger {
+                @include mixins.button-style;
+            }
+
+            .admin-access-box {
+                margin-top: 20px; 
+                padding: 15px; 
+                border: 2px dashed #ff4757; 
+                border-radius: 8px;
+
+                p {
+                    color: #ff4757; 
+                    font-weight: bold; 
+                    margin-bottom: 10px;
+                }
+
+                a {
+                    background: #ff4757; 
+                    color: white; 
+                    padding: 10px 20px; 
+                    text-decoration: none; 
+                    border-radius: 5px; 
+                    display: inline-block;
+                }
+            }
+
             .logout-link {
                 display: inline-flex;
                 align-items: center;
@@ -327,7 +353,7 @@
     }
 
     @media screen and (min-width: 992px) {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 350px 1fr;
 
         .account-sidebar {
             align-self: flex-start;

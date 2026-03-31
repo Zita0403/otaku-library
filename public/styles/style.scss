@@ -7,6 +7,8 @@
 @use "components/toplist-layout" as *; /* Top List */
 @use "components/login" as *; /* Login */
 @use "components/account"; /* Account */
+@use "components/dashboard"; /* Admin Dashboard */
+@use "components/privacy"; /* Privacy Policy */
 @use "mixins";
 @use "variables"; /*Colors */
 
@@ -388,6 +390,15 @@ footer {
         font-style: normal;
         font-size: 14px;
         color: variables.$text-main;
+        
+        a {
+            color: variables.$primary;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
 
         &:hover {
             color: variables.$text-muted;

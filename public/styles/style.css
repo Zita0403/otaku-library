@@ -857,10 +857,11 @@
 .auth-container {
   width: 18rem;
   margin: 0 auto;
+  padding: 1rem;
 }
 .auth-container #login-form,
 .auth-container #register-form {
-  height: 450px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -888,8 +889,8 @@
   width: 100%;
   align-items: flex-start;
 }
-.auth-container #login-form input,
-.auth-container #register-form input {
+.auth-container #login-form form input,
+.auth-container #register-form form input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -897,8 +898,8 @@
   font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
 }
-.auth-container #login-form button,
-.auth-container #register-form button {
+.auth-container #login-form form button,
+.auth-container #register-form form button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -914,18 +915,18 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.auth-container #login-form button:hover,
-.auth-container #register-form button:hover {
+.auth-container #login-form form button:hover,
+.auth-container #register-form form button:hover {
   background-color: #f06d81;
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
-.auth-container #login-form button,
-.auth-container #register-form button {
+.auth-container #login-form form button,
+.auth-container #register-form form button {
   width: 100%;
   font-size: 16px;
 }
-.auth-container #login-form button:hover,
-.auth-container #register-form button:hover {
+.auth-container #login-form form button:hover,
+.auth-container #register-form form button:hover {
   background-color: #f06d81;
   color: white;
 }
@@ -1002,6 +1003,45 @@
 .account-container .account-sidebar .user-info-card .sidebar-stats .stat-item .stat-label {
   font-size: 12px;
   color: #76778C;
+}
+.account-container .account-sidebar .user-info-card .btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.account-container .account-sidebar .user-info-card .btn-danger:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.account-container .account-sidebar .user-info-card .admin-access-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px dashed #ff4757;
+  border-radius: 8px;
+}
+.account-container .account-sidebar .user-info-card .admin-access-box p {
+  color: #ff4757;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.account-container .account-sidebar .user-info-card .admin-access-box a {
+  background: #ff4757;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
 }
 .account-container .account-sidebar .user-info-card .logout-link {
   display: inline-flex;
@@ -1320,7 +1360,7 @@
 }
 @media screen and (min-width: 992px) {
   .account-container {
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 350px 1fr;
   }
   .account-container .account-sidebar {
     align-self: flex-start;
@@ -1344,6 +1384,221 @@
 }
 
 /* Account */
+/* Colors, fonts, etc. */
+/* Reusable styles and functions */
+.admin-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #515177;
+}
+.admin-container .privacy-edit-section {
+  margin-top: 10px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
+  padding: 20px;
+}
+.admin-container .privacy-edit-section .section-desc {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+.admin-container .privacy-edit-section .policy-textarea {
+  width: 100%;
+  background: #F8F8F8;
+  color: #515177;
+  border: 1px solid #f06d81;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: "Courier New", Courier, monospace;
+  resize: vertical;
+  outline: none;
+}
+.admin-container .privacy-edit-section .policy-textarea:focus {
+  border-color: #FF375E;
+}
+.admin-container .privacy-edit-section .btn-update {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.admin-container .privacy-edit-section .btn-update:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.admin-container .privacy-edit-section .btn-update {
+  margin-top: 10px;
+}
+.admin-container .invite-form-card {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
+  background: white;
+  padding: 20px;
+  margin: 2rem 0;
+}
+.admin-container .invite-form-card form {
+  display: flex;
+  gap: 10px;
+}
+.admin-container .invite-form-card form input {
+  flex: 1;
+  padding: 8px;
+}
+.admin-container .invite-form-card form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.admin-container .invite-form-card form button:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.admin-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+.admin-container table th, .admin-container table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+.admin-container table .code-cell {
+  font-family: monospace;
+  font-weight: bold;
+  color: #e74c3c;
+}
+.admin-container table .delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.admin-container table .delete-button:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.admin-container table .delete-button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.admin-container .alert.success {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.admin-container .back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.admin-container .back-link:hover {
+  background-color: #f06d81;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.admin-container .back-link a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Admin Dashboard */
+/* Colors, fonts, etc. */
+/* Reusable styles and functions */
+.privacy-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgba(240, 109, 129, 0.435);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.privacy-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #FF375E;
+}
+.privacy-container .text-muted {
+  color: #76778C;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.privacy-container .policy-content {
+  line-height: 1.6;
+  color: #515177;
+}
+.privacy-container .policy-content p {
+  margin-bottom: 15px;
+}
+.privacy-container .policy-content h2 {
+  font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #FF375E;
+}
+.privacy-container .policy-content ul, .privacy-container .policy-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.privacy-container .policy-content ul li, .privacy-container .policy-content ol li {
+  margin-bottom: 10px;
+}
+
+/* Privacy Policy */
 /*Colors */
 * {
   box-sizing: border-box;
@@ -1707,6 +1962,13 @@ footer p {
   font-style: normal;
   font-size: 14px;
   color: #515177;
+}
+footer p a {
+  color: #FF375E;
+  text-decoration: none;
+}
+footer p a:hover {
+  text-decoration: underline;
 }
 footer p:hover {
   color: #76778C;

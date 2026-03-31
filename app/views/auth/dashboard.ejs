@@ -1,0 +1,70 @@
+<%- include("../partials/header.ejs") %>
+<div class="admin-container">
+    <h1>Admin Dashboard</h1>
+
+    <section class="privacy-edit-section">
+        <h3>Edit Privacy Policy</h3>
+        <p class="section-desc">You can use HTML tags (e.g., &lt;h3&gt;, &lt;p&gt;, &lt;b&gt;) for formatting.</p>
+        
+        <form action="/admin/update-privacy" method="POST">
+            <textarea name="content" class="policy-textarea" rows="12"><%= privacyContent %></textarea>
+            <div class="form-actions">
+                <button type="submit" class="btn-update">Save & Update Policy</button>
+            </div>
+        </form>
+    </section>
+
+    <% if (success === 'policy_updated') { %>
+        <div class="alert success">Privacy Policy updated successfully!</div>
+    <% } %>
+    
+    <% if (success === '1') { %>
+        <div class="alert success">Invitation sent successfully!</div>
+    <% } %>
+
+    <section class="invite-form-card">
+        <h3>Generate New Invite</h3>
+        <form action="/auth/sendInvite" method="POST">
+            <input type="email" name="email" placeholder="Target Email Address" required>
+            <button type="submit">Send Invite</button>
+        </form>
+    </section>
+
+    <section class="active-invites">
+        <h3>Active Invite Codes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Email</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% invites.forEach(invite => { %>
+                    <tr>
+                        <td class="code-cell"><%= invite.code %></td>
+                        <td><%= invite.email %></td>
+                        <td><%= new Date(invite.created_at).toLocaleString('hu-HU') %></td>
+                        <td>
+                            <form action="/auth/deleteInvite/<%= invite.code %>" method="POST"  class="delete-form">
+                                <button type="submit"
+                                        class="delete-button">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% if (invites.length === 0) { %>
+            <p>No active codes.</p>
+        <% } %>
+    </section>
+
+    <button class="back-link">
+        <a href="/auth/account">← Back to my profile</a>
+    </button>
+</div>
+<%- include("../partials/footer.ejs") %>

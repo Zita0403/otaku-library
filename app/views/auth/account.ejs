@@ -7,6 +7,20 @@
             </div>
             <h2><%= user.user_name %></h2>
             <p class="user-email"><%= user.email %></p>
+            <% if (!user.is_admin) { %>
+                <div>
+                    <button type="button" id="btnDeleteAccount" class="btn-danger">
+                        Permanently delete account
+                    </button>
+                </div>
+            <% } else { %>
+            <div class="admin-access-box">
+                <p>🛡️ Administrator privilege detected</p>
+                <a href="/auth/dashboard" class="admin-btn">
+                    Login to Admin Dashboard
+                </a>
+            </div>
+            <% } %>
             
             <hr class="sidebar-divider">
             
@@ -45,7 +59,7 @@
                     </div>
                     <form action="/auth/toggle-nsfw" method="POST">
                         <button type="submit" class="toggle-btn">
-                            <%= user.allow_nsfw ? "Disable" : "Enable" %>
+                            <%= user.allow_nsfw ? "Disable" : "Enabled" %>
                         </button>
                     </form>
                 </div>

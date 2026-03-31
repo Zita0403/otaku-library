@@ -1,0 +1,106 @@
+@use "../variables"; /* Colors, fonts, etc. */
+@use "../mixins"; /* Reusable styles and functions */
+
+.admin-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: variables.$font-main;
+    color: variables.$text-main;
+
+    .privacy-edit-section {
+        margin-top: 10px;
+        @include mixins.info-card;
+        padding: 20px;
+
+        .section-desc {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .policy-textarea {
+            width: 100%;
+            background: variables.$bg-main;
+            color: variables.$text-main;
+            border: 1px solid variables.$primary-light;
+            border-radius: variables.$radius-md;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            resize: vertical;
+            outline: none;
+
+            &:focus {
+                border-color: variables.$primary;
+            }
+        }
+
+        .btn-update {
+            @include mixins.button-style;
+            margin-top: 10px;
+        }
+    }
+
+    .invite-form-card {
+        @include mixins.info-card;
+        background: white;
+        padding: 20px;
+        margin: 2rem 0;
+
+        form {
+            display: flex;
+            gap: 10px;
+            
+            input { 
+                flex: 1; 
+                padding: 8px; 
+            }
+            button { 
+                @include mixins.button-style;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+
+        th, td { 
+            border-bottom: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        
+        .code-cell { 
+            font-family: monospace; 
+            font-weight: bold; 
+            color: #e74c3c; 
+        }
+
+        .delete-button {
+            @include mixins.button-style;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    }
+
+    .alert.success {
+        background: #d4edda;
+        color: #155724;
+        padding: 10px;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+    }
+
+    .back-link {
+        @include mixins.button-style;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}
