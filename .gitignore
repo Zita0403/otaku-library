@@ -148,3 +148,7 @@ vite.config.ts.timestamp-*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+// SQL files
+*.sql
+!otaku_library.sql
