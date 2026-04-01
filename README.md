@@ -10,11 +10,11 @@
 
 | Főoldal | Adatlap | Felhasználói fiók |
 |:---:|:---:|:---:|
-| ![Home](public/images/screenshots/home-page.png) | ![Details](public/images/screenshots/anime-details.png) | ![Account](public/images/screenshots/user-account.png) |
+| ![Home](public/images/screenshots/home-page.png) | ![Details](public/images/screenshots/anime-details.png) | ![Account](public/images/screenshots/user-account.png) | ![Login](public/images/screenshots/login-page.png) |
 
 | Keresés | Mobil nézet | Bejelentkezés |
 |:---:|:---:|:---:|
-| ![Search](public/images/screenshots/search-results.png) | ![Mobile](public/images/screenshots/mobile-view.png) | ![Login](public/images/screenshots/login-page.png) |
+| ![Mobile](public/images/screenshots/mobile-view.png) | ![Mobile Nav](public/images/screenshots/mobile-view-nav.png) | ![Account](public/images/screenshots/mobile-view-account.png) | ![Login](public/images/screenshots/mobile-view-login.png) |
 
 Ez a projekt egy modern, Node.js alapú anime adatbázis és közösségi listakezelő alkalmazás, amely a **Jikan API (MyAnimeList)** adataira épül. A szoftver lehetővé teszi az animék közötti böngészést, részletes adatlapok megtekintését és egyéni gyűjtemények (Kedvencek, Megnézendő, Befejezett) kezelését.
 

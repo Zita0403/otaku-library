@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js",
+    "build-css": "sass public/styles/style.scss public/styles/style.css",
+    "watch-css": "sass --watch public/styles/style.scss:public/styles/style.css"
+  },
   "keywords": [],
   "author": "Zita Lukács",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.4.0"
+    "@types/node": "^25.4.0",
+    "sass": "^1.98.0"
   },
   "dependencies": {
     "axios": "^1.14.0",

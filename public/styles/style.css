@@ -861,7 +861,7 @@
 }
 .auth-container #login-form,
 .auth-container #register-form {
-  height: 550px;
+  height: 580px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -947,6 +947,10 @@
   max-width: 100%;
   width: 100%;
   min-height: calc(100vh - 80px);
+  font-family: "Noto Sans JP", sans-serif;
+}
+.account-container button, .account-container h2, .account-container h4, .account-container h6, .account-container p, .account-container a, .account-container span {
+  font-family: inherit;
 }
 .account-container .account-sidebar {
   position: relative;
@@ -1797,6 +1801,7 @@ header .header-row .header-right #account-login .dropdown-menu {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   flex-direction: column;
   gap: 8px;
+  font-family: "Noto Sans JP", sans-serif;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), visibility 0.3s;
 }

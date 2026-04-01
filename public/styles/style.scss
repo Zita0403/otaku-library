@@ -225,6 +225,7 @@ header {
                     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
                     flex-direction: column;
                     gap: 8px;
+                    font-family: variables.$font-main;
                     transform: translateY(10px);
                     transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), visibility 0.3s;
 

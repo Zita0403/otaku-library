@@ -10,6 +10,11 @@
     max-width: 100%;
     width: 100%;
     min-height: calc(100vh - 80px);
+    font-family: variables.$font-main;
+
+    button, h2, h4, h6, p, a, span {
+        font-family: inherit;
+    }
     
     .account-sidebar {
         position: relative;
