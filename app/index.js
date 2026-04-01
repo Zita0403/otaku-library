@@ -111,6 +111,7 @@ app.use(async (req, res, next) => {
         console.error("Middleware error:", err.message);
         res.locals.genres = [];
         res.locals.user = req.user || null;
+        res.locals.url = req.originalUrl;
         next(); 
     }
 });
