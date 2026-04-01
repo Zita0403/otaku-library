@@ -11,6 +11,7 @@ export const getSeasonalList = async(req, res) => {
         const response = await axios.get(`${JIKAN_URL}/seasons/now`);
         const safeSlideshow = filterAnimeList(response.data.data, req.user); 
         res.render("index", { 
+            title: "Seasonal Anime",
             animeList: safeSlideshow, 
             anime: null, 
             error: null 
@@ -30,6 +31,7 @@ export const getToplist = async(req, res) => {
         const response = await axios.get(`${JIKAN_URL}/top/anime`);
         const safeToplist = filterAnimeList(response.data.data, req.user);
         res.render("pages/top", { 
+            title: "Top Rated Anime",
             animeList: safeToplist, 
             error: null 
         });
@@ -75,7 +77,10 @@ export const getAnimeDetails = async(req, res) => {
         res.render("pages/details", { 
             anime: animeData,
             user: req.user || null,
-            status: userStatus
+            status: userStatus,
+            title: animeData.title, 
+            description: animeData.synopsis ? animeData.synopsis.substring(0, 150).replace(/\r?\n|\r/g, " ") + "..." : "Check out this anime details!",
+            ogImage: animeData.images?.jpg?.large_image_url || "https://otakulibrary.zita.dev/images/og-image.jpg",
         });
     } catch (err) {
         console.error("Error retrieving datasheet:", err);

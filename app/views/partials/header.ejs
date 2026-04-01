@@ -17,7 +17,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Otaku Library</title>
+    <link rel="canonical" href="https://otakulibrary.zita.dev/">
+    <title><%= title ? title + ' | Otaku Library' : 'Otaku Library' %></title>
+    <!-- Meta tags -->
+    <meta name="title" content="Otaku Library">
+    <meta name="description" content="<%= description %>">
+    <meta property="og:url" content="https://otakulibrary.zita.dev/">
+    <meta property="og:title" content="<%= title ? title : 'Otaku Library' %>">
+    <meta property="og:description" content="<%= description %>">
+    <meta property="og:image" content="<%= ogImage %>">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://otakulibrary.zita.dev/">
+    <meta property="twitter:title" content="<%= title ? title : 'Otaku Library' %>">
+    <meta property="twitter:description" content="<%= description %>">
+    <meta property="twitter:image" content="<%= ogImage %>">
 </head>
 <body>
     <canvas id="sakura-canvas"></canvas>
