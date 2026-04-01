@@ -8,12 +8,14 @@
 
 ## Screenshots
 
+### Desktop View
 | Home page | Details | Account page | Sign up page |
-|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|
 | ![Home](public/images/screenshots/home-page.png) | ![Details](public/images/screenshots/anime-details.png) | ![Account](public/images/screenshots/user-account.png) | ![Login](public/images/screenshots/login-page.png) |
 
-| Search results | Mobile view | Account page | Sign up page |
-|:---:|:---:|:---:|
+### Mobile View
+| Search results | Mobile Nav | Mobile Account | Mobile Login |
+|:---:|:---:|:---:|:---:|
 | ![Mobile](public/images/screenshots/mobile-view.png) | ![Mobile Nav](public/images/screenshots/mobile-view-nav.png) | ![Account](public/images/screenshots/mobile-view-account.png) | ![Login](public/images/screenshots/mobile-view-login.png) |
 
 This project is a modern, Node.js-based anime database and community list management application built on the **Jikan API (MyAnimeList)**. The software allows users to browse anime, view detailed info sheets, and manage personal collections (Favorites, Plan to Watch, Completed).
