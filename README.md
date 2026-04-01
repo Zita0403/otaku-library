@@ -73,6 +73,8 @@ otaku_library/
 1. users – Felhasználók adatai (username, email, password_hash, allow_nsfw).
 2. user_anime_lists – A felhasználók mentett animéi (anime_id, cím, kép, típus: favorite/watched/wishlist).
 3. session – Perzisztens munkamenetek tárolása (connect-pg-simple).
+4. invite_codes – Regisztrációhoz szükséges meghívókódok kezelése.
+5. site_settings – Dinamikus oldaltartalmak (pl. Privacy Policy szövege).
 
 Kapcsolatok: A felhasználók és az animék között egy-a-sokhoz reláció áll fenn a listák mentésekor.
 
@@ -88,7 +90,8 @@ npm install
 ```
 
 2. Adatbázis inicializálása:
-Hozz létre egy adatbázist otaku_library néven, majd futtasd le az alábbi SQL parancsokat:
+  1. Hozz létre egy adatbázist otaku_library néven, majd futtasd le az alábbi SQL parancsokat:
+  2. Importáld az app/otaku_library.sql fájlt
 
 3. Környezeti változók: Hozz létre egy .env fájlt az app/ mappában:
 

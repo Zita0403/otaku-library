@@ -70,9 +70,11 @@ otaku_library/
 ## Database (PostgreSQL)
 
 ### Tables:
-1. users – User data (username, email, password_hash, allow_nsfw).
-2. user_anime_lists – User-saved anime (anime_id, title, image, list_type: favorite/watched/wishlist).
-3. session – Persistent session storage (connect-pg-simple).
+1. **users** – User data (username, email, password_hash, allow_nsfw, is_admin).
+2. **user_anime_lists** – User-saved anime (favorites, plan to watch, completed).
+3. **session** – Persistent session storage (`connect-pg-simple`).
+4. **invite_codes** – Management of invitation codes required for registration.
+5. **site_settings** – Dynamic site content (e.g., Privacy Policy text).
 
 Connections: A one-to-many relationship exists between users and their saved anime lists.
 
