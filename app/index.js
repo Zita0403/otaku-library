@@ -145,11 +145,13 @@ app.get("/search", animeController.searchAnime); // Search
 /** List actions **/
 app.post("/api/list/toggle", listController.toggleAnime); // Add/remove new anime
 
+// Global error handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).render("index", { 
         anime: null, 
         animeList: [], 
+        genres: [],
         error: "Something went wrong on the server. Please try again later!" 
     });
 });
