@@ -8,11 +8,11 @@
 
 ## Screenshots
 
-| Home page | Details | Account page |
+| Home page | Details | Account page | Sign up page |
 |:---:|:---:|:---:|
 | ![Home](public/images/screenshots/home-page.png) | ![Details](public/images/screenshots/anime-details.png) | ![Account](public/images/screenshots/user-account.png) | ![Login](public/images/screenshots/login-page.png) |
 
-| Search results | Mobile view | Sign up page |
+| Search results | Mobile view | Account page | Sign up page |
 |:---:|:---:|:---:|
 | ![Mobile](public/images/screenshots/mobile-view.png) | ![Mobile Nav](public/images/screenshots/mobile-view-nav.png) | ![Account](public/images/screenshots/mobile-view-account.png) | ![Login](public/images/screenshots/mobile-view-login.png) |
 
