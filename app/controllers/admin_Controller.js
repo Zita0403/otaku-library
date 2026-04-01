@@ -1,5 +1,6 @@
 import sendInvite from "../utils/mailer.js";
 import db from '../db.js';
+import { title } from "process";
 
 export const getDashboard = async (req, res) => {
     try {
@@ -8,7 +9,8 @@ export const getDashboard = async (req, res) => {
             "SELECT content FROM site_settings WHERE key = $1", 
             ['privacy_policy']
         );
-        res.render('auth/dashboard', { 
+        res.render('auth/dashboard', {
+            title: "Admin Dashboard", 
             user: req.user, 
             invites: invites.rows,
             privacyContent: privacyRes.rows[0] ? privacyRes.rows[0].content : "",

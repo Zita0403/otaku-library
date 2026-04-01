@@ -2,6 +2,7 @@
 import db from "../db.js";
 import bcrypt from "bcrypt";
 import passport from "passport";
+import { title } from "process";
 
 // Register
 export const register = async(req, res, next) => {
@@ -99,12 +100,18 @@ export const getLoginPage = (req, res) => {
         errorMessage = "Incorrect username or password!";
     }
 
-    res.render("auth/login", { error: errorMessage, user: req.user });
+    res.render("auth/login", { 
+        title: "Sign in",
+        error: errorMessage, user: req.user 
+    });
 };
 
 // GET register page 
 export const getRegisterPage = (req, res) => {
-    res.render("auth/register", { user: req.user });
+    res.render("auth/register", { 
+        title: "Sign up", 
+        user: req.user 
+    });
 };
 
 // GET account page
@@ -122,10 +129,22 @@ if (req.isAuthenticated()) {
                 wishlist: result.rows.filter(item => item.list_type === 'wishlist')
             };
 
-            res.render("auth/account", { user: req.user, lists: lists });
+            res.render("auth/account", { 
+                title: `${req.user.user_name} | My Account`, 
+                user: req.user, 
+                lists: lists 
+            });
         } catch (err) {
             console.error(err);
-            res.render("auth/account", { user: req.user, lists: { favorite: [], watched: [], wishlist: [] } });
+            res.render("auth/account", { 
+                title: `${req.user.user_name} | My Account`, 
+                user: req.user, 
+                lists: { 
+                    favorite: [], 
+                    watched: [], 
+                    wishlist: [] 
+                } 
+            });
         }
     } else {
         res.redirect("/auth/login");
@@ -196,6 +215,7 @@ export const getPrivacyPage = async (req, res) => {
         const policy = result.rows[0] || { content: "Privacy Policy is under construction.", updated_at: new Date() };
         
         res.render("pages/privacy", { 
+            title: "Privacy Policy",
             content: policy.content, 
             lastUpdated: policy.updated_at,
             user: req.user || null 
