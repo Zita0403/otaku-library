@@ -58,6 +58,8 @@ app.use(
         ],
       },
     },
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    crossOriginEmbedderPolicy: false,
   })
 );
 
