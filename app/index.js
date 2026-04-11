@@ -160,6 +160,8 @@ app.post("/api/list/toggle", listController.toggleAnime); // Add/remove new anim
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).render("index", { 
+        title: "Error",
+        description: "Something went wrong.",
         anime: null, 
         animeList: [], 
         genres: [],
