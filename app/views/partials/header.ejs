@@ -30,7 +30,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://otakulibrary.zita.dev<%= typeof url !== 'undefined' ? url : '' %>">
     <meta property="og:title" content="<%= title ? title : 'Otaku Library' %>">
-    <meta property="og:description" content="<%= description %>">
+    <meta name="description" content="<%= (locals.description) ? description : 'Welcome to Otaku Library - Your favorite anime database.' %>">
     <meta property="og:image" content="<%= (typeof ogImage !== 'undefined' && ogImage) ? (ogImage.startsWith('http') ? ogImage : 'https://otakulibrary.zita.dev' + ogImage) : 'https://otakulibrary.zita.dev/images/og-image.jpg' %>">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
