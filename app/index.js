@@ -162,6 +162,9 @@ app.use((err, req, res, next) => {
     res.status(500).render("index", { 
         title: "Error",
         description: "Something went wrong.",
+        ogImage: "https://otakulibrary.zita.dev/images/og-image.jpg",
+        path: req.path,
+        user: req.user || null,
         anime: null, 
         animeList: [], 
         genres: [],
