@@ -1,6 +1,7 @@
 // controllers/authController.js
 import db from "../db.js";
 import bcrypt from "bcrypt";
+import { error } from "console";
 import passport from "passport";
 import { title } from "process";
 
@@ -110,7 +111,8 @@ export const getLoginPage = (req, res) => {
 export const getRegisterPage = (req, res) => {
     res.render("auth/register", { 
         title: "Sign up", 
-        user: req.user 
+        user: req.user || null,
+        error: req.query.error || null
     });
 };
 
