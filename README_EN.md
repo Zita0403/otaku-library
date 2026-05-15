@@ -115,6 +115,7 @@ npm start
 
 Live Demo
 The project is available live at the following link: **[otakulibrary.zita.dev](https://otakulibrary.zita.dev)**
+If you would like to test the Otaku Library after registration, please request an invite code by opening an Issue in this GitHub repository or by sending me a private message!
 
 - [Open Home page:](http://localhost:3000/)
 - [Sign up page](http://localhost:3000/auth/register)

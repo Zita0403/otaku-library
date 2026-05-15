@@ -114,7 +114,8 @@ npm start
 
 ## Weboldal elérése
 
-A projekt élőben is megtekinthető az alábbi linken: [Nézd meg élőben!](https://otakulibrary.zita.dev)
+A projekt élőben is megtekinthető az alábbi linken: [Nézd meg élőben!](https://otakulibrary.zita.dev).
+Ha szeretnéd regisztráció után is kipróbálni az Otaku Library-t, kérj egy meghívó kódot a GitHub repónál egy Issue megnyitásával, vagy írj nekem privát üzenetet!
 
 - [Főoldal megnyitása:](http://localhost:3000/)
 - [Regisztráció:](http://localhost:3000/auth/register)
