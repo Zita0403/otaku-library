@@ -444,6 +444,7 @@
 /* Colors, fonts, etc. */
 .details-layout {
   padding: 30px;
+  margin: 20px 0;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -1198,6 +1199,7 @@
 }
 .account-container .account-sidebar .user-info-card {
   padding: 30px;
+  margin: 20px 0;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -1682,6 +1684,7 @@
 .admin-container .privacy-edit-section {
   margin-top: 10px;
   padding: 30px;
+  margin: 20px 0;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -1732,6 +1735,7 @@
 }
 .admin-container .invite-form-card {
   padding: 30px;
+  margin: 20px 0;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);

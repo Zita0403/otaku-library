@@ -169,6 +169,7 @@
 // Info card
 @mixin info-card {
     padding: 30px;
+    margin: 20px 0;
     border-radius: 20px;
     box-shadow: variables.$shadow-sm;
     border: 1px solid rgba(0, 0, 0, 0.05);
