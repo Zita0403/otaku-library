@@ -35,7 +35,7 @@
     <header> 
         <div class="header-left">
             <a href="/"> 
-                <img src="/images/otaku.png" style="width: 60px; height: 60px;" class="me-2">
+                <img src="/images/otaku.png" alt="Logo" style="width: 60px; height: 60px;" class="me-2">
                 <h1>Otaku Library</h1> 
             </a> 
             <ul class="nav"> 
@@ -68,13 +68,13 @@
         <% } %>
 
             <div class="header-right">
-                <a href="https://github.com/Zita0403/otaku-library">
+                <a href="https://github.com/Zita0403/otaku-library" aria-label="Visit Otaku Library on GitHub">
                     <i class="github-icon"></i>
                 </a>
                 <div id="account-login">
                 <% if (locals.user) { %>
                 <div class="user-dropdown">
-                    <div class="dropdown-trigger">
+                    <div class="dropdown-trigger" aria-label="Toggle user menu">
                         <span><%= user.user_name %></span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
@@ -103,13 +103,13 @@
 
     </header>
     <nav class="mobile-nav">
-        <a href="/" class="nav-item">
+        <a href="/" class="nav-item" aria-label="Go to Homepage">
             <i class="fa-solid fa-house"></i>
         </a>
-        <a href="/top" class="nav-item">
+        <a href="/top" class="nav-item" aria-label="View Toplist">
             <i class="fa-solid fa-thumbs-up"></i>
         </a>
-        <div href="#" class="nav-item sub-mobile-nav-toggle"><i class="fa-solid fa-masks-theater"></i>
+        <div href="#" role="button" class="nav-item sub-mobile-nav-toggle" aria-label="Toggle genres menu" tabindex="0"><i class="fa-solid fa-masks-theater"></i>
             <ul class="sub-mobile-nav">
                 <% genres.forEach(genre => { %>
                 <li>
@@ -118,7 +118,7 @@
                 <% }); %>
             </ul>
         </div>
-        <label for="search-input-id" class="nav-item search-button">
+        <label for="search-input-id" class="nav-item search-button" aria-label="Open search menu">
             <i class="fa-solid fa-magnifying-glass"></i>
         </label>
     </nav>
