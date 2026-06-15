@@ -27,6 +27,222 @@
   }
 }
 /* Sakura Canvas */
+/* noto-sans-jp-100 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-100.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-200 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-200.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-300 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-500 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-600 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-700 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-800 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-jp-900 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/noto-sans-jp-v56-latin_latin-ext-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-100 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-100.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-100italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 100;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-100italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-200 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-200.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-200italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 200;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-200italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-300 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-300italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-300italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-500 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-500italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 500;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-500italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-600 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-600italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-600italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-700 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-700italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-800 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-800italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 800;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-800italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-900 - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-900italic - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/montserrat-v31-latin_latin-ext-900italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 /* Colors, fonts, etc. */
 /* Colors, fonts, etc. */
 /* Mobile Navigation */
@@ -58,8 +274,29 @@
   transition: all 0.3s ease-in-out;
   position: relative;
 }
+.mobile-nav .nav-item .fa-solid {
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(41%) sepia(72%) saturate(5166%) hue-rotate(329deg) brightness(102%) contrast(101%);
+}
+.mobile-nav .nav-item .fa-house {
+  background-image: url(../../webfonts/house-solid-full.svg);
+}
+.mobile-nav .nav-item .fa-thumbs-up {
+  background-image: url(../../webfonts/thumbs-up-solid-full.svg);
+}
+.mobile-nav .nav-item .fa-masks-theater {
+  background-image: url(../../webfonts/masks-theater-solid-full.svg);
+}
+.mobile-nav .nav-item .fa-magnifying-glass {
+  background-image: url(../../webfonts/magnifying-glass-solid-full.svg);
+}
+.mobile-nav .nav-item .fa-solid:hover {
+  filter: brightness(0) saturate(100%) invert(6%) sepia(46%) saturate(7424%) hue-rotate(236deg) brightness(127%) contrast(120%);
+}
 .mobile-nav .nav-item:hover {
-  color: #000072;
   background-color: rgba(237, 219, 240, 0.667);
   border-radius: 50%;
   transform: translateY(-5px);
@@ -974,6 +1211,15 @@
   color: #FF375E;
   margin-bottom: 15px;
 }
+.account-container .account-sidebar .user-info-card .user-avatar i {
+  display: inline-block;
+  width: 85px;
+  height: 85px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../../webfonts/circle-user-solid-full.svg);
+  filter: brightness(0) saturate(100%) invert(38%) sepia(64%) saturate(2994%) hue-rotate(325deg) brightness(97%) contrast(111%);
+}
 .account-container .account-sidebar .user-info-card h2 {
   font-size: 22px;
   margin-bottom: 5px;
@@ -1035,26 +1281,39 @@
   border-radius: 8px;
 }
 .account-container .account-sidebar .user-info-card .admin-access-box p {
-  color: #ff4757;
+  color: #FF375E;
   font-weight: bold;
   margin-bottom: 10px;
 }
 .account-container .account-sidebar .user-info-card .admin-access-box a {
-  background: #ff4757;
+  background: #FF375E;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
   display: inline-block;
 }
+.account-container .account-sidebar .user-info-card .admin-access-box a:hover {
+  background: #f06d81;
+}
 .account-container .account-sidebar .user-info-card .logout-link {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   color: #ff4757;
   text-decoration: none;
   font-weight: 600;
   transition: opacity 0.2s;
+}
+.account-container .account-sidebar .user-info-card .logout-link i {
+  display: inline-block;
+  background-image: url(../../webfonts/right-from-bracket-solid-full.svg);
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(38%) sepia(64%) saturate(2994%) hue-rotate(325deg) brightness(97%) contrast(111%);
 }
 .account-container .account-sidebar .user-info-card .logout-link:hover {
   opacity: 0.7;
@@ -1099,6 +1358,15 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
+}
+.account-container .account-main .settings-card .card-icon i {
+  display: inline-block;
+  background-image: url(../../webfonts/shield-halved-solid-full.svg);
+  width: 26px;
+  height: 26px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(38%) sepia(64%) saturate(2994%) hue-rotate(325deg) brightness(97%) contrast(111%);
 }
 .account-container .account-main .settings-card .card-details {
   flex-grow: 1;
@@ -1330,6 +1598,20 @@
   width: 30px;
   border-radius: 50%;
   display: none;
+}
+.account-container .account-main .list-container .slider-wrapper .slider-arrow .fa-solid {
+  display: block;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(81%) saturate(1%) hue-rotate(168deg) brightness(104%) contrast(100%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+}
+.account-container .account-main .list-container .slider-wrapper .slider-arrow .fa-chevron-left {
+  background-image: url(../../webfonts/chevron-left-solid-full.svg);
+}
+.account-container .account-main .list-container .slider-wrapper .slider-arrow .fa-chevron-right {
+  background-image: url(../../webfonts/chevron-right-solid-full.svg);
 }
 .account-container .account-main .list-container .slider-wrapper .slider-arrow.is-visible {
   display: flex;
@@ -1712,12 +1994,18 @@ header .header-row .mobile-nav-toggle {
   cursor: pointer;
 }
 header .header-row .mobile-nav-toggle i {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url(../webfonts/right-to-bracket-solid-full.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: #515177;
+  filter: brightness(0) saturate(100%) invert(30%) sepia(9%) saturate(1974%) hue-rotate(201deg) brightness(95%) contrast(83%);
 }
 header .header-row .mobile-nav-toggle i.rotated {
   transform: rotate(90deg);
-  color: #FF375E;
+  filter: brightness(0) saturate(100%) invert(41%) sepia(72%) saturate(5166%) hue-rotate(329deg) brightness(102%) contrast(101%);
 }
 header .header-row .header-right {
   display: flex;
@@ -1740,6 +2028,7 @@ header .header-row .header-right #account-login {
 }
 header .header-row .header-right #account-login .auth-group {
   display: none;
+  font-family: "Noto Sans JP", sans-serif;
 }
 header .header-row .header-right #account-login .auth-group.show-auth {
   display: flex;
@@ -1766,6 +2055,7 @@ header .header-row .header-right #account-login .auth-group #login:hover {
 }
 header .header-row .header-right #account-login .auth-group #register {
   text-decoration: underline;
+  font-family: var(--font-main);
 }
 header .header-row .header-right #account-login .auth-group #register:hover {
   text-decoration: none;
@@ -1781,11 +2071,16 @@ header .header-row .header-right #account-login .dropdown-trigger {
   transition: all 0.3s ease;
 }
 header .header-row .header-right #account-login .dropdown-trigger i {
-  font-size: 0.8rem;
+  background-image: url(../webfonts/angle-down-solid-full.svg);
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 header .header-row .header-right #account-login .dropdown-trigger:hover {
-  color: #f06d81;
+  filter: brightness(0) saturate(100%) invert(51%) sepia(51%) saturate(622%) hue-rotate(302deg) brightness(99%) contrast(90%);
 }
 header .header-row .header-right #account-login .dropdown-menu {
   position: absolute;
@@ -1809,6 +2104,29 @@ header .header-row .header-right #account-login .dropdown-menu {
 header .header-row .header-right #account-login .dropdown-menu li:hover a {
   color: #76778C;
 }
+header .header-row .header-right #account-login .dropdown-menu li a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+header .header-row .header-right #account-login .dropdown-menu .fa-solid {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(0%) sepia(23%) saturate(7490%) hue-rotate(281deg) brightness(88%) contrast(100%);
+}
+header .header-row .header-right #account-login .dropdown-menu .fa-user {
+  background-image: url(../webfonts/user-solid-full.svg);
+}
+header .header-row .header-right #account-login .dropdown-menu .fa-gear {
+  background-image: url(../webfonts/gear-solid-full.svg);
+}
+header .header-row .header-right #account-login .dropdown-menu .fa-right-from-bracket {
+  background-image: url(../webfonts/right-from-bracket-solid-full.svg);
+}
 header .header-row .header-right #account-login:hover .dropdown-menu, header .header-row .header-right #account-login.active .dropdown-menu {
   visibility: visible;
   opacity: 1;
@@ -1821,13 +2139,17 @@ header .header-row .header-right #account-login:hover .dropdown-trigger i, heade
 }
 header .header-row .header-right .github-icon {
   display: block;
-  color: black;
-  font-size: 32px;
+  filter: brightness(0) saturate(100%);
+  width: 32px;
+  height: 32px;
   transition: all 0.5s ease-in-out;
+  background-image: url(../webfonts/github-brands-solid-full.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 header .header-row .header-right .github-icon:hover {
   transform: scale(1.2);
-  color: rgb(90, 85, 85);
+  filter: brightness(0) saturate(100%) invert(33%) sepia(6%) saturate(20%) hue-rotate(19deg) brightness(99%) contrast(97%);
 }
 
 /* Autocomplete list */

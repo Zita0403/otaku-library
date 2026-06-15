@@ -4,19 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <!-- Own Stylsheet-->
     <link rel="stylesheet" href="/styles/style.css">
-    <!-- Font style -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Navigation font style -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://otakulibrary.zita.dev/">
     <title><%= (locals.title) ? title + ' | Otaku Library' : 'Otaku Library' %></title>
     <!-- Meta tags -->
@@ -74,13 +63,13 @@
 
         <% if (!locals.user) { %>
             <a href="#" class="mobile-nav-toggle">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>  
+                <i class="fa-arrow-right-to-bracket"></i>  
             </a>
         <% } %>
 
             <div class="header-right">
                 <a href="https://github.com/Zita0403/otaku-library">
-                    <i class="fa-brands fa-github github-icon"></i>
+                    <i class="github-icon"></i>
                 </a>
                 <div id="account-login">
                 <% if (locals.user) { %>
@@ -103,13 +92,9 @@
                 </div>
                     <% } else { %>
                         <div class="auth-group">
-                            <a href="/auth/login" id="login">
-                                <p>Sign in</p>
-                            </a>
+                            <a href="/auth/login" id="login">Sign in</a>
                             <span>/</span>
-                            <a href="/auth/register" id="register">
-                                <p>Sign up</p>
-                            </a>
+                            <a href="/auth/register" id="register">Sign up</a>
                         </div>
                     <% } %>
                 </div>

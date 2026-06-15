@@ -124,12 +124,18 @@ header {
             cursor: pointer;
             
             i {
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+                background-image: url(../webfonts/right-to-bracket-solid-full.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
                 transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                color: variables.$text-main;
+                filter: brightness(0) saturate(100%) invert(30%) sepia(9%) saturate(1974%) hue-rotate(201deg) brightness(95%) contrast(83%);
 
                 &.rotated {
                     transform: rotate(90deg);
-                    color: variables.$primary;
+                    filter: brightness(0) saturate(100%) invert(41%) sepia(72%) saturate(5166%) hue-rotate(329deg) brightness(102%) contrast(101%);
                 }
             }
         }
@@ -156,6 +162,7 @@ header {
 
                 .auth-group {
                     display: none;
+                    font-family: variables.$font-main;
 
                     &.show-auth{
                         display: flex; 
@@ -184,6 +191,7 @@ header {
 
                     #register {
                         text-decoration: underline;
+                        font-family: var(--font-main);
 
                         &:hover {
                             text-decoration: none;
@@ -202,12 +210,17 @@ header {
                     transition: variables.$transition;
 
                     i {
-                        font-size: 0.8rem;
+                        background-image: url(../webfonts/angle-down-solid-full.svg);
+                        width: 18px;
+                        height: 18px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
                         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     }
 
                     &:hover {
-                        color: variables.$primary-light;
+                        filter: brightness(0) saturate(100%) invert(51%) sepia(51%) saturate(622%) hue-rotate(302deg) brightness(99%) contrast(90%);
                     }
                 }
 
@@ -233,6 +246,34 @@ header {
                     li:hover a {
                         color: variables.$text-muted;
                     }
+
+                    li a {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: 5px;
+                    }
+
+                    .fa-solid {
+                        display: inline-block;
+                        width: 18px;
+                        height: 18px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        filter: brightness(0) saturate(100%) invert(0%) sepia(23%) saturate(7490%) hue-rotate(281deg) brightness(88%) contrast(100%);
+                    }
+
+                    .fa-user {
+                        background-image: url(../webfonts/user-solid-full.svg);
+                    }
+
+                    .fa-gear {
+                        background-image: url(../webfonts/gear-solid-full.svg);
+                    }
+
+                    .fa-right-from-bracket {
+                        background-image: url(../webfonts/right-from-bracket-solid-full.svg);
+                    }
                 }
 
                 &:hover, &.active {
@@ -252,13 +293,17 @@ header {
 
             .github-icon {
                 display: block;
-                color: black;
-                font-size: 32px;
+                filter: brightness(0) saturate(100%);
+                width: 32px;
+                height: 32px;
                 transition: all 0.5s ease-in-out;
+                background-image: url(../webfonts/github-brands-solid-full.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
 
                 &:hover {
                     transform: scale(1.2);
-                    color: rgb(90, 85, 85);
+                    filter: brightness(0) saturate(100%) invert(33%) sepia(6%) saturate(20%) hue-rotate(19deg) brightness(99%) contrast(97%);
                 }
             }
         }
