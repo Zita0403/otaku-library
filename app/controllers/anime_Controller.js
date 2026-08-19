@@ -83,7 +83,7 @@ export const getAnimeDetails = async(req, res) => {
             ogImage: animeData.images?.jpg?.large_image_url || "https://otakulibrary.zita.dev/images/og-image.jpg",
         });
     } catch (err) {
-        console.error("Error retrieving datasheet:", err);
+        console.error("Error retrieving datasheet:", err.response?.data || err.message || err);
         res.status(500).render("index", { 
             anime: null, 
             animeList: [], 
