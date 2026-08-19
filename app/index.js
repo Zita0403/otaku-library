@@ -158,17 +158,21 @@ app.post("/api/list/toggle", listController.toggleAnime); // Add/remove new anim
 
 // Global error handler
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    console.error(err.stack || err.message);
+    const isDev = process.env.NODE_ENV !== 'production';
     res.status(500).render("index", { 
         title: "Error",
         description: "Something went wrong.",
         ogImage: "https://otakulibrary.zita.dev/images/og-image.jpg",
+        url: req.originalUrl || req.path,
         path: req.path,
         user: req.user || null,
         anime: null, 
         animeList: [], 
         genres: [],
-        error: "Something went wrong on the server. Please try again later!" 
+        error: isDev 
+            ? `Error: ${err.message}` 
+            : "Something went wrong on the server. Please try again later!"
     });
 });
 

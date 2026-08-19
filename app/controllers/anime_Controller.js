@@ -171,8 +171,8 @@ const { genreId, genreName } = req.params;
             genreName: genreName,
             genreId: genreId,
             currentPage: page,
-            lastPage: pagination.last_visible_page,
-            hasNextPage: pagination.has_next_page,
+            lastPage: pagination.last_visible_page || 1,
+            hasNextPage: pagination.has_next_page || false,
             type: 'genre',
             error:null
         });
@@ -182,6 +182,7 @@ const { genreId, genreName } = req.params;
             genreName, 
             genreId: genreId,
             currentPage: page,
+            lastPage: 1,
             hasNextPage: false,
             error: err.message 
         });
