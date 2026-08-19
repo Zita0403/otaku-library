@@ -127,10 +127,18 @@ export const searchAnime = async (req, res) => {
             error: null
         });
     } catch (err) {
-        console.error("Search error:", err);
+        console.error("Search error:", err.message);
         res.render("pages/genre", {
-            title: `Category: ${genreName}`,
+title: `Search Results: "${query}"`,
             animeList: [],
+            type: 'search',
+            searchQuery: query,
+            currentPage: page,
+            lastPage: 1,
+            hasNextPage: false,
+            baseUrl: `/search?q=${encodeURIComponent(query)}&`,
+            genreId: null,
+            genreName: null,
             error: "Something went wrong during search.",
         });
     }
@@ -138,12 +146,25 @@ export const searchAnime = async (req, res) => {
 
 // Autocomplete list
 export const getAutocomplete = async (req, res) => {
+    const query = req.query.q;
+
+    if (!query || query.trim().length < 3) {
+        return res.json([]);
+    }
+
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime?q=${encodeURIComponent(req.query.q)}&limit=5`);
-        const safeData = filterAnimeList(response.data.data, req.user);
-        res.json({ data: safeData });
+        const response = await axios.get(`${JIKAN_URL}/anime`, {
+            params: {
+                q: query,
+                limit: 5,
+                sfw: true
+            }
+        });
+        const safeData = filterAnimeList(response.data.data || [], req.user);
+        res.json(safeData);
     } catch (err) {
-        res.status(500).json({ error: "Hiba" });
+        console.error("Autocomplete API error:", err.message);
+        res.status(200).json([]);
     }
 };
 
@@ -178,15 +199,18 @@ const { genreId, genreName } = req.params;
             error:null
         });
     } catch (err) {
+        console.error("Genre list error:", err.message);
         res.render("pages/genre", { 
+            title: `Category: ${genreName}`,
             animeList: [], 
-            genreName, 
+            genreName: genreName, 
             genreId: genreId,
             currentPage: page,
             lastPage: 1,
             baseUrl: `/genre/${genreId}/${genreName}?`,
             hasNextPage: false,
-            error: err.message 
+            type: 'genre',
+            error: "Could not fetch genre list."
         });
     }    
 };
