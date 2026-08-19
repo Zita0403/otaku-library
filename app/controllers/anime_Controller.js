@@ -172,6 +172,7 @@ const { genreId, genreName } = req.params;
             genreId: genreId,
             currentPage: page,
             lastPage: pagination.last_visible_page || 1,
+            baseUrl: `/genre/${genreId}/${genreName}?`,
             hasNextPage: pagination.has_next_page || false,
             type: 'genre',
             error:null
@@ -183,6 +184,7 @@ const { genreId, genreName } = req.params;
             genreId: genreId,
             currentPage: page,
             lastPage: 1,
+            baseUrl: `/genre/${genreId}/${genreName}?`,
             hasNextPage: false,
             error: err.message 
         });
