@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config();
 import pg from 'pg';
 
 // PostgreSQL connection setup
