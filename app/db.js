@@ -1,7 +1,5 @@
-import dotenv from'dotenv';
+import 'dotenv/config';
 import pg from 'pg';
-
-dotenv.config({ path: path.join(__dirname, '.env') });
 
 // PostgreSQL connection setup
 const db = new pg.Pool({
