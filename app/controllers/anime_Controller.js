@@ -8,7 +8,7 @@ const JIKAN_URL = "https://api.jikan.moe/v4";
 // Main page seasonal slideshow
 export const getSeasonalList = async(req, res) => {
     try {
-        const response = await axios.get(`${JIKAN_URL}/seasons/now`);
+        const response = await axios.get(`${JIKAN_URL}/seasons/now`, { timeout: 8000 });
         const safeSlideshow = filterAnimeList(response.data.data, req.user); 
         res.render("index", { 
             title: "Seasonal Anime",
@@ -28,7 +28,7 @@ export const getSeasonalList = async(req, res) => {
 // Toplist
 export const getToplist = async(req, res) => {
     try { 
-        const response = await axios.get(`${JIKAN_URL}/top/anime`);
+        const response = await axios.get(`${JIKAN_URL}/top/anime`, { timeout: 8000 });
         const safeToplist = filterAnimeList(response.data.data, req.user);
         res.render("pages/top", { 
             title: "Top Rated Anime",
@@ -47,7 +47,7 @@ export const getToplist = async(req, res) => {
 export const getAnimeDetails = async(req, res) => {
     const animeId = req.params.id; 
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime/${animeId}/full`);
+        const response = await axios.get(`${JIKAN_URL}/anime/${animeId}/full`, { timeout: 8000 });
         const animeData = response.data.data;
 
         if (!animeData) {
@@ -108,7 +108,8 @@ export const searchAnime = async (req, res) => {
                 q: query,
                 page: page,
                 limit: limit
-            }
+            },
+            timeout: 8000
         });
 
         const safeSearch = filterAnimeList(response.data.data, req.user);
@@ -129,7 +130,7 @@ export const searchAnime = async (req, res) => {
     } catch (err) {
         console.error("Search error:", err.message);
         res.render("pages/genre", {
-title: `Search Results: "${query}"`,
+            title: `Search Results: "${query}"`,
             animeList: [],
             type: 'search',
             searchQuery: query,
@@ -158,7 +159,8 @@ export const getAutocomplete = async (req, res) => {
                 q: query,
                 limit: 5,
                 sfw: true
-            }
+            },
+            timeout: 8000
         });
         const safeData = filterAnimeList(response.data.data || [], req.user);
         res.json(safeData);
@@ -182,7 +184,8 @@ const { genreId, genreName } = req.params;
                 limit: limit,
                 order_by: "score",
                 sort: "desc" 
-            }
+            },
+            timeout: 8000
         });
         const safeGenre = filterAnimeList(response.data.data, req.user);
         const pagination = response.data.pagination;
