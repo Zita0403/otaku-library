@@ -1,7 +1,11 @@
 <%- include("../partials/header.ejs") %>
 <h2 class="genre-title">Category: <%= title %></h2>
 <div class="content">
-    <% if (animeList && animeList.length > 0) { %>
+    <% if (locals.error && error) { %>
+        <div class="api-error-box">
+            <p><%= error %></p>
+        </div>
+    <% } else if (animeList && animeList.length > 0) { %>
         <% animeList.forEach(anime => { %>
             <div class="anime-card">
                 <a href="/anime/<%= anime.mal_id %>">
@@ -21,32 +25,34 @@
         <p>No anime found in this category.</p>
     <% } %>
 </div>
-<div class="pagination">
-    <% 
-        const baseUrl = (locals.type === 'search') 
-            ? `/search?q=${encodeURIComponent(searchQuery)}&` 
-            : `/genre/${genreId}/${genreName}?`;
-    %>
-    <% if (currentPage > 1) { %>
-        <a href="<%= baseUrl %>page=1" class="btn">«</a>
-        <a href="<%= baseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
-    <% } %>
-    <% 
-        let startPage = Math.max(1, currentPage - 2);
-        let endPage = Math.min(lastPage, startPage + 4); 
-        if (endPage - startPage < 4) {
-            startPage = Math.max(1, endPage - 4);
-        }
-    %>
-    <% for(let i = startPage; i <= endPage; i++) { %>
-            <a href="<%= baseUrl %>page=<%= i %>" 
-               class="page-num <%= i === currentPage ? 'active' : '' %>">
-                <%= i %>
-            </a>
-    <% } %>
-    <% if (hasNextPage) { %>
-        <a href="<%= baseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
-        <a href="<%= baseUrl %>page=<%= lastPage %>" class="btn">»</a>
-    <% } %>
-</div>
+<% if (!locals.error || !error) { %>
+    <div class="pagination">
+        <% 
+            const baseUrl = (locals.type === 'search') 
+                ? `/search?q=${encodeURIComponent(searchQuery)}&` 
+                : `/genre/${genreId}/${genreName}?`;
+        %>
+        <% if (currentPage > 1) { %>
+            <a href="<%= baseUrl %>page=1" class="btn">«</a>
+            <a href="<%= baseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
+        <% } %>
+        <% 
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(lastPage, startPage + 4); 
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+        %>
+        <% for(let i = startPage; i <= endPage; i++) { %>
+                <a href="<%= baseUrl %>page=<%= i %>" 
+                class="page-num <%= i === currentPage ? 'active' : '' %>">
+                    <%= i %>
+                </a>
+        <% } %>
+        <% if (hasNextPage) { %>
+            <a href="<%= baseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
+            <a href="<%= baseUrl %>page=<%= lastPage %>" class="btn">»</a>
+        <% } %>
+    </div>
+<% } %>
 <%- include("../partials/footer.ejs") %>

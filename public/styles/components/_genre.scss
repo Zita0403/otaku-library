@@ -29,6 +29,25 @@
     .anime-card {
         @include mixins.anime-card-basic;
     }
+    .api-error-box {
+        @include mixins.flex-center($gap: 5px, $margin: 40px 0);
+        grid-column: 1 / -1;
+        max-width: 400px; margin: 20px auto;
+        background-color: variables.$bg-soft; 
+        padding: 20px; 
+        border-radius: variables.$radius-md; 
+        border: none; 
+        text-align: center;
+        font-size: 14px;
+        font-family: variables.$font-nav;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        color: variables.$primary;
+        overflow-wrap: break-word;
+        word-break: break-word;  
+        line-height: 1.5;
+    }
 }
 
 .pagination {

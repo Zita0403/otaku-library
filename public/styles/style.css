@@ -973,6 +973,31 @@
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.content .api-error-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 40px 0;
+  grid-column: 1/-1;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: rgba(240, 109, 129, 0.435);
+  padding: 20px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #FF375E;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.5;
+}
 
 .pagination {
   display: flex;

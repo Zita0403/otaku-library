@@ -130,6 +130,10 @@ export const searchAnime = async (req, res) => {
         });
     } catch (err) {
         console.error("Search error:", err.message);
+        const jikanErrorMessage = err.response?.data?.message;
+        const errorMessage = jikanErrorMessage 
+            ? `External provider error: ${jikanErrorMessage}`
+            : "Jikan API servers are currently unavailable.";
         res.render("pages/genre", {
             title: `Search Results: "${query}"`,
             animeList: [],
@@ -141,7 +145,7 @@ export const searchAnime = async (req, res) => {
             baseUrl: `/search?q=${encodeURIComponent(query)}&`,
             genreId: null,
             genreName: null,
-            error: "Something went wrong during search.",
+            error: errorMessage,
         });
     }
 };
@@ -166,7 +170,8 @@ export const getAutocomplete = async (req, res) => {
         const safeData = filterAnimeList(response.data.data || [], req.user);
         res.json(safeData);
     } catch (err) {
-        console.error("Autocomplete API error:", err.message);
+        const jikanErrorMessage = err.response?.data?.message || err.message;
+        console.error("Autocomplete API error:", jikanErrorMessage);
         res.status(200).json([]);
     }
 };
@@ -204,6 +209,10 @@ const { genreId, genreName } = req.params;
         });
     } catch (err) {
         console.error("Genre list error:", err.message);
+        const jikanErrorMessage = err.response?.data?.message;
+        const errorMessage = jikanErrorMessage 
+            ? `External provider error: ${jikanErrorMessage}`
+            : "Jikan API servers are currently unavailable.";
         res.render("pages/genre", { 
             title: genreName,
             animeList: [], 
@@ -214,7 +223,7 @@ const { genreId, genreName } = req.params;
             baseUrl: `/genre/${genreId}/${genreName}?`,
             hasNextPage: false,
             type: 'genre',
-            error: "Could not fetch genre list."
+            error: errorMessage
         });
     }    
 };
