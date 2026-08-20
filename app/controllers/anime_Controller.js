@@ -107,7 +107,8 @@ export const searchAnime = async (req, res) => {
             params: {
                 q: query,
                 page: page,
-                limit: limit
+                limit: limit,
+                sfw: req.user ? undefined : true
             },
             timeout: 8000
         });
@@ -190,7 +191,7 @@ const { genreId, genreName } = req.params;
         const safeGenre = filterAnimeList(response.data.data, req.user);
         const pagination = response.data.pagination;
         res.render("pages/genre", { 
-            title: `Category: ${genreName}`,
+            title: genreName,
             animeList: safeGenre, 
             genreName: genreName,
             genreId: genreId,
@@ -204,7 +205,7 @@ const { genreId, genreName } = req.params;
     } catch (err) {
         console.error("Genre list error:", err.message);
         res.render("pages/genre", { 
-            title: `Category: ${genreName}`,
+            title: genreName,
             animeList: [], 
             genreName: genreName, 
             genreId: genreId,

@@ -101,10 +101,7 @@ app.use(async (req, res, next) => {
             cachedGenres = response.data.data.sort((a, b) => a.name.localeCompare(b.name));
         }
         res.locals.genres = cachedGenres;
-
         res.locals.user = req.user || null;
-
-
         res.locals.title = "Otaku Library";
         res.locals.description = "Discover and explore your favorite anime!";
         res.locals.ogImage = "https://otakulibrary.zita.dev/images/og-image.jpg";
