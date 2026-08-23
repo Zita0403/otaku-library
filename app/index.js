@@ -48,8 +48,12 @@ app.use(
             "https://cdn.jsdelivr.net",
             "https://cdnjs.cloudflare.com" 
         ],
-        "img-src": ["'self'", "data:", "https://myanimelist.net", "https://cdn.myanimelist.net"],
-        "connect-src": ["'self'", "https://api.jikan.moe"],
+        "img-src": [
+            "'self'", 
+            "data:", 
+            "https:"
+        ],
+        "connect-src": ["'self'", "https://kitsu.io", "https://*.kitsu.io"],
         "font-src": [
             "'self'", 
             "https://fonts.gstatic.com", 
@@ -97,8 +101,37 @@ let cachedGenres = null;
 app.use(async (req, res, next) => {
     try {
         if (!cachedGenres) {
-            const response = await axios.get("https://api.jikan.moe/v4/genres/anime");
-            cachedGenres = response.data.data.sort((a, b) => a.name.localeCompare(b.name));
+            const response = await axios.get("https://kitsu.io/api/edge/categories", {
+                params: {
+                    'page[limit]': 50,
+                    'sort': 'title'
+                },
+                headers: {
+                    'Accept': 'application/vnd.api+json'
+                }
+            });
+            cachedGenres = [
+                { mal_id: 'action', name: 'Action' },
+                { mal_id: 'adventure', name: 'Adventure' },
+                { mal_id: 'comedy', name: 'Comedy' },
+                { mal_id: 'drama', name: 'Drama' },
+                { mal_id: 'fantasy', name: 'Fantasy' },
+                { mal_id: 'horror', name: 'Horror' },
+                { mal_id: 'mystery', name: 'Mystery' },
+                { mal_id: 'romance', name: 'Romance' },
+                { mal_id: 'sci-fi', name: 'Sci-Fi' },
+                { mal_id: 'slice-of-life', name: 'Slice of Life' },
+                { mal_id: 'sports', name: 'Sports' },
+                { mal_id: 'supernatural', name: 'Supernatural' },
+                { mal_id: 'thriller', name: 'Thriller' },
+                { mal_id: 'mecha', name: 'Mecha' },
+                { mal_id: 'music', name: 'Music' },
+                { mal_id: 'psychological', name: 'Psychological' },
+                { mal_id: 'isekai', name: 'Isekai' },
+                { mal_id: 'historical', name: 'Historical' },
+                { mal_id: 'martial-arts', name: 'Martial Arts' },
+                { mal_id: 'school', name: 'School' }
+            ];
         }
         res.locals.genres = cachedGenres;
         res.locals.user = req.user || null;

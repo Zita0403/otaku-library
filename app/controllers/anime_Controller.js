@@ -3,13 +3,104 @@ import axios from "axios";
 import { filterAnimeList } from "../utils/nsfwFilter.js";
 import db from "../db.js";
 
-const JIKAN_URL = "https://api.jikan.moe/v4";
+const KITSU_URL = "https://kitsu.io/api/edge";
+
+// Transform KITSU JSON: API response structure for EJS templates
+const formatKitsuAnime = (item, included = []) => {
+    if (!item) return null;
+    const attr = item.attributes || item;
+    
+    let year = 'N/A';
+    let season = '';
+    let seasonYearText = 'N/A';
+
+    const startDate = attr.startDate;
+
+    if (startDate && typeof startDate === 'string' && startDate.includes('-')) {
+        const parts = startDate.split('-');
+        year = parts[0]; 
+        const month = parseInt(parts[1], 10); 
+
+        if (month >= 1 && month <= 3) season = 'Winter';
+        else if (month >= 4 && month <= 6) season = 'Spring';
+        else if (month >= 7 && month <= 9) season = 'Summer';
+        else if (month >= 10 && month <= 12) season = 'Fall';
+
+        seasonYearText = season ? `${season} ${year}` : `${year}`;
+    }
+
+    let categoriesList = [];
+    const safeIncluded = Array.isArray(included) ? included : [];
+    if (item.relationships?.categories?.data) {
+            const catIds = item.relationships.categories.data.map(c => c.id);
+            categoriesList = safeIncluded
+                .filter(inc => inc.type === 'categories' && catIds.includes(inc.id))
+                .map(inc => inc.attributes?.title || inc.attributes?.slug || '');
+    }
+
+    const originalTitle = attr.titles?.ja_jp || attr.titles?.en_jp || attr.canonicalTitle || 'N/A';
+
+    const poster = attr.posterImage;
+    const imageUrl = poster?.medium || poster?.small || poster?.original || '/images/no-cover.jpg';
+    const largeImageUrl = poster?.large || poster?.original || poster?.medium || '/images/no-cover.jpg';
+
+    const ageRatingMap = {
+        'G': 'General Audiences',
+        'PG': 'Parental Guidance Suggested',
+        'R': 'Restricted',
+        'R18': 'Explicit'
+    };
+
+    let ageRatingText = 'N/A';
+        if (attr.ageRating) {
+            const fullRating = ageRatingMap[attr.ageRating] || attr.ageRating;
+            if (attr.ageRatingGuide) {
+                ageRatingText = `${fullRating} - ${attr.ageRatingGuide}`;
+            } else {
+                ageRatingText = fullRating;
+            }
+    }   
+
+    return {
+        id: item.id,
+        mal_id: item.id,
+        original_title: originalTitle,
+        episodes: attr.episodeCount || 'N/A',
+        title: attr.canonicalTitle || attr.titles?.en_jp || attr.titles?.en || 'Unknown Title',
+        images: {
+            jpg: {
+                image_url: imageUrl,
+                large_image_url: largeImageUrl
+            }
+        },
+        score: attr.averageRating ? (parseFloat(attr.averageRating) / 10).toFixed(2) : "N/A",
+        age_rating: ageRatingText,
+        year: year,
+        season: season,
+        seasonYear: seasonYearText,
+        seasonYearText: seasonYearText,
+        startDate: startDate,
+        type: attr.showType ? attr.showType.toUpperCase() : 'TV',
+        synopsis: attr.synopsis || 'No description available',
+        categories: categoriesList
+    };
+};
 
 // Main page seasonal slideshow
 export const getSeasonalList = async(req, res) => {
     try {
-        const response = await axios.get(`${JIKAN_URL}/seasons/now`, { timeout: 8000 });
-        const safeSlideshow = filterAnimeList(response.data.data, req.user); 
+        const response = await axios.get(`${KITSU_URL}/anime`, {
+            params: {
+                'filter[status]': 'current',
+                'sort': '-startDate',
+                'page[limit]': 10,
+                'include': 'categories'
+            },
+            headers: {'Accept': 'application/vnd.api+json'},
+            timeout: 8000
+        });
+        const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
+        const safeSlideshow = filterAnimeList(rawList, req.user); 
         res.render("index", { 
             title: "Seasonal Anime",
             animeList: safeSlideshow, 
@@ -17,6 +108,7 @@ export const getSeasonalList = async(req, res) => {
             error: null 
         });
     } catch (err) {
+        console.error("Seasonal list error:", err.message);
         res.render("index", { 
             animeList: [], 
             anime: null, 
@@ -27,15 +119,31 @@ export const getSeasonalList = async(req, res) => {
 
 // Toplist
 export const getToplist = async(req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 20;
+    const offset = (page - 1) * limit;
+
     try { 
-        const response = await axios.get(`${JIKAN_URL}/top/anime`, { timeout: 8000 });
-        const safeToplist = filterAnimeList(response.data.data, req.user);
+        const response = await axios.get(`${KITSU_URL}/anime`, { 
+            params: {
+                'sort': '-averageRating',
+                'page[limit]': limit,
+                'page[offset]': offset,
+                'include': 'categories'
+            },
+            headers: {'Accept': 'application/vnd.api+json'},
+            timeout: 8000 
+        });
+
+        const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
+        const safeToplist = filterAnimeList(rawList, req.user);
         res.render("pages/top", { 
             title: "Top Rated Anime",
             animeList: safeToplist, 
             error: null 
         });
     } catch (err) {
+        console.error("Toplist error:", err.message);
         res.render("pages/top", { 
             animeList: [], 
             error: err.message 
@@ -47,8 +155,11 @@ export const getToplist = async(req, res) => {
 export const getAnimeDetails = async(req, res) => {
     const animeId = req.params.id; 
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime/${animeId}/full`, { timeout: 8000 });
-        const animeData = response.data.data;
+        const response = await axios.get(`${KITSU_URL}/anime/${animeId}`, {
+            headers: {'Accept': 'application/vnd.api+json'},
+            timeout: 8000 
+        });
+        const animeData = formatKitsuAnime(response.data.data);
 
         if (!animeData) {
             return res.status(404).render("errors/404", { message: "Anime not found." });
@@ -97,24 +208,27 @@ export const searchAnime = async (req, res) => {
     const query = req.query.q; 
     const page = parseInt(req.query.page) || 1;
     const limit = 20;
+    const offset = (page - 1) * limit;
 
     if (!query || query.trim().length < 3) {
         return res.redirect("/"); 
     }
 
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime`, {
+        const response = await axios.get(`${KITSU_URL}/anime`, {
             params: {
-                q: query,
-                page: page,
-                limit: limit,
-                sfw: req.user ? undefined : true
+                'filter[text]': query,
+                'page[limit]': limit,
+                'page[offset]': offset,
             },
+            headers: {'Accept': 'application/vnd.api+json'},
             timeout: 8000
         });
 
-        const safeSearch = filterAnimeList(response.data.data, req.user);
-        const pagination = response.data.pagination;
+        const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
+        const safeSearch = filterAnimeList(rawList, req.user);
+        const totalCount = response.data.meta.count;
+        const lastPage = Math.ceil(totalCount / limit) || 1;
 
         res.render("pages/genre", { 
             title: `Search Results: "${query}"`,
@@ -122,18 +236,19 @@ export const searchAnime = async (req, res) => {
             type: 'search',           
             searchQuery: query,       
             currentPage: page,
-            lastPage: pagination.last_visible_page,
-            hasNextPage: pagination.has_next_page,
+            lastPage: lastPage,
+            hasNextPage: page < lastPage,
+            baseUrl: `/search?q=${encodeURIComponent(query)}&`,
             genreId: null,            
             genreName: null,
             error: null
         });
     } catch (err) {
         console.error("Search error:", err.message);
-        const jikanErrorMessage = err.response?.data?.message;
-        const errorMessage = jikanErrorMessage 
-            ? `External provider error: ${jikanErrorMessage}`
-            : "Jikan API servers are currently unavailable.";
+        const kitsuErrorMessage = err.response?.data?.message;
+        const errorMessage = kitsuErrorMessage 
+            ? `External provider error: ${kitsuErrorMessage}`
+            : "Kitsu API servers are currently unavailable.";
         res.render("pages/genre", {
             title: `Search Results: "${query}"`,
             animeList: [],
@@ -159,19 +274,20 @@ export const getAutocomplete = async (req, res) => {
     }
 
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime`, {
+        const response = await axios.get(`${KITSU_URL}/anime`, {
             params: {
-                q: query,
-                limit: 5,
-                sfw: true
+                'filter[text]': query,
+                'page[limit]': 5,
             },
+            headers: {'Accept': 'application/vnd.api+json'},
             timeout: 8000
         });
-        const safeData = filterAnimeList(response.data.data || [], req.user);
+        const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
+        const safeData = filterAnimeList(rawList || [], req.user);
         res.json(safeData);
     } catch (err) {
-        const jikanErrorMessage = err.response?.data?.message || err.message;
-        console.error("Autocomplete API error:", jikanErrorMessage);
+        const kitsuErrorMessage = err.response?.data?.message || err.message;
+        console.error("Autocomplete API error:", kitsuErrorMessage);
         res.status(200).json([]);
     }
 };
@@ -179,40 +295,46 @@ export const getAutocomplete = async (req, res) => {
 // Genre list
 export const getGenreList = async (req, res) => {
 const { genreId, genreName } = req.params;  
-    const page = parseInt(req.query.page) || 1;
+    const page = parseInt(req.query.page, 10) || 1;
     const limit = 20; 
+    const offset = (page - 1) * limit;
     
     try {
-        const response = await axios.get(`${JIKAN_URL}/anime`, {
+        const response = await axios.get(`${KITSU_URL}/anime`, {
             params: { 
-                genres: genreId, 
-                page: page,
-                limit: limit,
-                order_by: "score",
-                sort: "desc" 
+                'filter[category]': genreId, 
+                'page[limit]': limit,
+                'page[offset]': offset,
             },
+            headers: {'Accept': 'application/vnd.api+json'},
             timeout: 8000
         });
-        const safeGenre = filterAnimeList(response.data.data, req.user);
-        const pagination = response.data.pagination;
+        const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
+        const safeGenre = filterAnimeList(rawList, req.user);
+        const totalCount = response.data.meta?.count || 0;
+        const lastPage = Math.ceil(totalCount / limit) || 1;
+
         res.render("pages/genre", { 
             title: genreName,
             animeList: safeGenre, 
             genreName: genreName,
             genreId: genreId,
             currentPage: page,
-            lastPage: pagination.last_visible_page || 1,
+            lastPage: lastPage,
             baseUrl: `/genre/${genreId}/${genreName}?`,
-            hasNextPage: pagination.has_next_page || false,
+            hasNextPage: page < lastPage,
             type: 'genre',
             error:null
         });
     } catch (err) {
         console.error("Genre list error:", err.message);
-        const jikanErrorMessage = err.response?.data?.message;
-        const errorMessage = jikanErrorMessage 
-            ? `External provider error: ${jikanErrorMessage}`
-            : "Jikan API servers are currently unavailable.";
+        console.error("DEBUG KITSU ERROR:");
+        console.error("Status:", err.response?.status);
+        console.error("Data:", err.response?.data);
+        const kitsuErrorMessage = err.response?.data?.message;
+        const errorMessage = kitsuErrorMessage 
+            ? `External provider error: ${kitsuErrorMessage}`
+            : "Kitsu API servers are currently unavailable.";
         res.render("pages/genre", { 
             title: genreName,
             animeList: [], 

@@ -49,7 +49,7 @@
                 <div class="settings-card">
                     <div class="card-icon">
                         <i class="fa-solid fa-shield-halved"></i>
-                    </div>
+                    </div>*
                     <div class="card-details">
                         <h4>Content Filtering</h4>
                         <p>Manage your browsing experience</p>
@@ -92,7 +92,7 @@
                                     <div class="mini-anime-card">
                                         <a href="/anime/<%= item.anime_id %>">
                                             <div class="img-container">
-                                                <img src="<%= item.anime_image %>" alt="<%= item.anime_title %>">
+                                                <img src="<%= item.anime_image ? item.anime_image : '/images/no-poster.png' %>" alt="<%= item.anime_title %>">
                                             </div>
                                             <div class="mini-card-info">
                                                 <h6 title="<%= item.anime_title %>"><%= item.anime_title %></h6>

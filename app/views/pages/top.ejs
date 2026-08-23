@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h5><%= anime.title %></h5>
                             <p><i class="fa-solid fa-star"></i> <%= anime.score %></p>
-                            <p>Year & Season: <%= anime.year %> <%= anime.season %></p>
+                            <p>Year & Season: <%= anime.seasonYearText || (anime.startDate ? anime.startDate.substring(0, 4) : 'N/A') %></p>
                     </div>
                 </a>
             </div>

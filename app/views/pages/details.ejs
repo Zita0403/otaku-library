@@ -3,16 +3,20 @@
     <div class="details-layout">
         <div class="anime-poster">
             <% 
-                const posterUrl = (anime.images && anime.images.jpg) ? anime.images.jpg.large_image_url : 'https://via.placeholder.com/400x600?text=No+Image';
+                const posterUrl = (anime.images && anime.images.jpg && anime.images.jpg.large_image_url) 
+                    ? anime.images.jpg.large_image_url 
+                    : (anime.images && anime.images.jpg && anime.images.jpg.image_url)
+                        ? anime.images.jpg.image_url 
+                        : 'https://via.placeholder.com/400x600?text=No+Image';
             %>
-            <img src="<%= posterUrl %>" alt="<%= anime.title %>">
+            <img src="<%= posterUrl %>" alt="<%= anime.title %>" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x600?text=No+Image';">
         </div>
         <div class="anime-info">
             <h1><%= anime.title %></h1>
-            <p><strong>Original title:</strong> <%= anime.title_japanese %></p>
+            <p><strong>Original title:</strong> <%= anime.original_title %></p>
             <p><strong>Score:</strong> ⭐ <%= anime.score %></p>
-            <p><strong>Year & Season:</strong> <%= anime.year %> <%= anime.season %></p>
-            <p><strong>Age Rating:</strong> <%= anime.rating %></p>
+            <p><strong>Year & Season:</strong> <%= anime.seasonYearText || (anime.startDate ? anime.startDate.substring(0, 4) : 'N/A')%></p>
+            <p><strong>Age Rating:</strong> <%= anime.age_rating %></p>
             <p><strong>Episodes:</strong> <%= anime.episodes %></p>
             <div class="list-actions">
                 <h4>Add to list:</h4>
@@ -20,7 +24,7 @@
                     <!-- Favorite -->
                     <button type="button" 
                             class="action-btn favorite btn-toggle <%= (locals.status && status.favorite) ? 'active' : '' %>" 
-                            data-id="<%= anime.mal_id %>"
+                            data-id="<%= anime.id %>"
                             data-title="<%= anime.title %>"
                             data-image="<%= posterUrl %>"
                             data-type="favorite">
@@ -30,7 +34,7 @@
                     <!-- Watched -->
                     <button type="button" 
                             class="action-btn watched btn-toggle <%= (locals.status && status.watched) ? 'active' : '' %>" 
-                            data-id="<%= anime.mal_id %>"
+                            data-id="<%= anime.id %>"
                             data-title="<%= anime.title %>"
                             data-image="<%= posterUrl %>"
                             data-type="watched">
@@ -40,7 +44,7 @@
                     <!-- Wishlist -->
                     <button type="button" 
                             class="action-btn wishlist btn-toggle <%= (locals.status && status.wishlist) ? 'active' : '' %>" 
-                            data-id="<%= anime.mal_id %>"
+                            data-id="<%= anime.id %>"
                             data-title="<%= anime.title %>"
                             data-image="<%= posterUrl %>"
                             data-type="wishlist">
@@ -57,7 +61,7 @@
     </div>
 <% } else { %>
     <div class="container">
-        <h2>Anime adatai nem tölthetők be.</h2>
+        <h2>Anime data cannot be loaded.</h2>
         <a href="/" class="btn btn-primary">Back to Home page</a>
     </div>
 <% } %>

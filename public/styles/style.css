@@ -1031,7 +1031,7 @@
   background-color: #f06d81;
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
-.pagination.active {
+.pagination .page-num.active, .pagination .btn.active {
   background: #FF375E;
   pointer-events: none;
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);

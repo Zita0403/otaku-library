@@ -59,11 +59,13 @@
 
     .page-num, .btn {
         @include mixins.button-style;
+
+        &.active {
+            background: variables.$primary;
+            pointer-events: none; 
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
     }
 
-    &.active {
-        background: variables.$primary;
-        pointer-events: none; 
-        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-    }
+
 }
