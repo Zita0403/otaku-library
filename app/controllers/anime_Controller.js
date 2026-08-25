@@ -302,7 +302,7 @@ const { genreId, genreName } = req.params;
     try {
         const response = await axios.get(`${KITSU_URL}/anime`, {
             params: { 
-                'filter[category]': genreId, 
+                'filter[categories]': genreId, 
                 'page[limit]': limit,
                 'page[offset]': offset,
             },
