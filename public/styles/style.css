@@ -899,6 +899,31 @@
   }
 }
 
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-container img {
+  width: 18px;
+  height: 18px;
+  fill: #515177;
+}
+.filter-container select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(240, 109, 129, 0.435);
+  color: #515177;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+.filter-container select:focus {
+  border-color: #FF375E;
+}
+
 .content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

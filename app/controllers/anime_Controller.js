@@ -294,10 +294,17 @@ export const getAutocomplete = async (req, res) => {
 
 // Genre list
 export const getGenreList = async (req, res) => {
-const { genreId, genreName } = req.params;  
+    const { genreId, genreName } = req.params;  
     const page = parseInt(req.query.page, 10) || 1;
     const limit = 20; 
+
     const offset = (page - 1) * limit;
+    
+    const validSorts = ['-averageRating', 'averageRating', '-startDate', 'startDate', 'canonicalTitle', '-canonicalTitle'];
+    const currentSort = validSorts.includes(req.query.sort) ? req.query.sort : '-averageRating';
+
+    const isTitleSort = currentSort === 'canonicalTitle' || currentSort === '-canonicalTitle';
+    const apiSortParam = isTitleSort ? '-averageRating' : currentSort;
     
     try {
         const response = await axios.get(`${KITSU_URL}/anime`, {
@@ -305,14 +312,27 @@ const { genreId, genreName } = req.params;
                 'filter[categories]': genreId, 
                 'page[limit]': limit,
                 'page[offset]': offset,
+                'sort': apiSortParam,
             },
             headers: {'Accept': 'application/vnd.api+json'},
             timeout: 8000
         });
         const rawList = response.data.data.map(item => formatKitsuAnime(item, response.data.included || []));
         const safeGenre = filterAnimeList(rawList, req.user);
+
+        if (isTitleSort) {
+            safeGenre.sort((a, b) => {
+                const titleA = (a.title || '').toLowerCase();
+                const titleB = (b.title || '').toLowerCase();
+                return currentSort === 'canonicalTitle' 
+                    ? titleA.localeCompare(titleB) 
+                    : titleB.localeCompare(titleA);
+            });
+        }
+
         const totalCount = response.data.meta?.count || 0;
         const lastPage = Math.ceil(totalCount / limit) || 1;
+        const baseUrl = `/genre/${genreId}/${genreName}?sort=${currentSort}&`;
 
         res.render("pages/genre", { 
             title: genreName,
@@ -321,7 +341,8 @@ const { genreId, genreName } = req.params;
             genreId: genreId,
             currentPage: page,
             lastPage: lastPage,
-            baseUrl: `/genre/${genreId}/${genreName}?`,
+            currentSort: currentSort, 
+            baseUrl: baseUrl,
             hasNextPage: page < lastPage,
             type: 'genre',
             error:null
@@ -342,7 +363,8 @@ const { genreId, genreName } = req.params;
             genreId: genreId,
             currentPage: page,
             lastPage: 1,
-            baseUrl: `/genre/${genreId}/${genreName}?`,
+            currentSort: currentSort,
+            baseUrl: `/genre/${genreId}/${genreName}?sort=${currentSort}&`,
             hasNextPage: false,
             type: 'genre',
             error: errorMessage

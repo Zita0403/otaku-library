@@ -1,5 +1,16 @@
 <%- include("../partials/header.ejs") %>
 <h2 class="genre-title">Category: <%= title %></h2>
+<div class="filter-container">
+    <img src="/webfonts/sliders-solid-full.svg" alt="Filter">
+<select name="sortGenre" id="sortGenre">
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=-averageRating" <%= currentSort === '-averageRating' ? 'selected' : '' %>>Rating: High to Low</option>
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=averageRating" <%= currentSort === 'averageRating' ? 'selected' : '' %>>Rating: Low to High</option>
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=-startDate" <%= currentSort === '-startDate' ? 'selected' : '' %>>Release Date: Newest</option>
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=startDate" <%= currentSort === 'startDate' ? 'selected' : '' %>>Release Date: Oldest</option>
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=canonicalTitle" <%= currentSort === 'canonicalTitle' ? 'selected' : '' %>>Title: A - Z</option>
+        <option value="/genre/<%= genreId %>/<%= genreName %>?sort=-canonicalTitle" <%= currentSort === '-canonicalTitle' ? 'selected' : '' %>>Title: Z - A</option>
+    </select>
+</div>
 <div class="content">
     <% if (locals.error && error) { %>
         <div class="api-error-box">
@@ -28,13 +39,13 @@
 <% if (!locals.error || !error) { %>
     <div class="pagination">
         <% 
-            const baseUrl = (locals.type === 'search') 
+            const finalBaseUrl = (locals.type === 'search') 
                 ? `/search?q=${encodeURIComponent(searchQuery)}&` 
-                : `/genre/${genreId}/${genreName}?`;
+                : (locals.baseUrl || `/genre/${genreId}/${genreName}?sort=${currentSort}&`);
         %>
         <% if (currentPage > 1) { %>
-            <a href="<%= baseUrl %>page=1" class="btn">«</a>
-            <a href="<%= baseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
+            <a href="<%= finalBaseUrl %>page=1" class="btn">«</a>
+            <a href="<%= finalBaseUrl %>page=<%= currentPage - 1 %>" class="btn">‹</a>
         <% } %>
         <% 
             let startPage = Math.max(1, currentPage - 2);
@@ -44,14 +55,14 @@
             }
         %>
         <% for(let i = startPage; i <= endPage; i++) { %>
-                <a href="<%= baseUrl %>page=<%= i %>" 
+                <a href="<%= finalBaseUrl %>page=<%= i %>" 
                 class="page-num <%= i === currentPage ? 'active' : '' %>">
                     <%= i %>
                 </a>
         <% } %>
         <% if (hasNextPage) { %>
-            <a href="<%= baseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
-            <a href="<%= baseUrl %>page=<%= lastPage %>" class="btn">»</a>
+            <a href="<%= finalBaseUrl %>page=<%= currentPage + 1 %>" class="btn">›</a>
+            <a href="<%= finalBaseUrl %>page=<%= lastPage %>" class="btn">»</a>
         <% } %>
     </div>
 <% } %>

@@ -9,6 +9,7 @@ import "./modules/mobile_login.js" // Mobile login focus
 import "./modules/show_more.js" // Show more lists in account page
 import "./modules/admin.js" // Admin dashboard functions
 import "./modules/account.js" // Account settings functions
+import "./modules/genreFilter.js" // Genre filter
 
 // Global function to show custom modal
 

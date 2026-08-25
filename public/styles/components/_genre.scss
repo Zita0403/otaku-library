@@ -23,6 +23,34 @@
     }
 }
 
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+        width: 18px;
+        height: 18px;
+        fill: variables.$text-main;
+    }
+
+    select {
+        padding: 6px 12px;
+        border-radius: variables.$radius-md;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: variables.$bg-soft;
+        color: variables.$text-main;
+        font-family: variables.$font-nav;
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+
+        &:focus {
+            border-color: variables.$primary;
+        }
+    }
+}
+
 .content {
     @include mixins.grid-main-content-layout;
 
